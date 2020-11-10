@@ -1,18 +1,19 @@
 package model.Beans;
 import java.io.Serializable;
 
-public class Prospect extends User implements Serializable {
+public class Prospect extends Individual implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	//TO-DO change the expectedDateOfCompletion to date type
 	private String level, currentQualification, obtainedQualification, expectedDateOfCompletion;
 	
 	public Prospect() {}
 	
 	public Prospect(String level, String currentQualification, String obtainedQualification, String expectedDateOfCompletion,
-			String username, String password, String email, String phoneNumber, String address, String description) {
-		super(username, password, email, phoneNumber, address, description);
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(fName, lName, password, email, phoneNumber, address, description);		
 		
 		this.level = level;
 		this.currentQualification = currentQualification;

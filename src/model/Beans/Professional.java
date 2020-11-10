@@ -1,7 +1,7 @@
 package model.Beans;
 import java.io.Serializable;
 
-public class Professional extends User implements Serializable{
+public class Professional extends Individual implements Serializable{
 	/**
 	 * 
 	 */
@@ -11,8 +11,8 @@ public class Professional extends User implements Serializable{
 	public Professional() {}
 
 	public Professional(String experience, String qualifications, String industry, String employmentStatus,
-			String username, String password, String email, String phoneNumber, String address, String description) {
-		super(username, password, email, phoneNumber, address, description);
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(fName, lName, password, email, phoneNumber, address, description);		
 		
 		this.experience = experience;
 		this.qualifications = qualifications;

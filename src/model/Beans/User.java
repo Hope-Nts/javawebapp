@@ -5,15 +5,14 @@ import java.io.Serializable;
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private String username,password, email, phoneNumber, address, description;
+	private String password, email, phoneNumber, address, description;
 	
 	public User() {
 		
 	}
 	
 	//constructor to be inherited by subclasses
-	public User(String username, String password, String email, String phoneNumber, String address, String description) {
-		this.username = username;
+	public User(String password, String email, String phoneNumber, String address, String description) {
 		this.password = password;
 		this.email = email;
 		this.phoneNumber =phoneNumber;
@@ -21,16 +20,7 @@ public class User implements Serializable{
 		this.description = description;
 	}
 	
-	//getters and setters
-	
-	public String getUsername() {
-		return this.username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
+	//getters and setters	
 	public String getPassword() {
 		return this.password;
 	}

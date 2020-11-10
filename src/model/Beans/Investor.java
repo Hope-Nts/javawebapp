@@ -2,7 +2,7 @@ package model.Beans;
 
 import java.io.Serializable;
 
-public class Investor extends User implements Serializable{
+public class Investor extends Individual implements Serializable{
 	
 	/**
 	 * 
@@ -13,12 +13,10 @@ public class Investor extends User implements Serializable{
 	public Investor() {}
 	
 	public Investor(String industry, String firmName,
-			String username, String password, String email, String phoneNumber, String address, String description) {
-		super(username, password, email, phoneNumber, address, description);
-		
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(fName, lName, password, email, phoneNumber, address, description);		
 		this.industry = industry;
 		this.firmName = firmName;
-		
 	} 
 	
 	public void setIndustry(String industry) {
