@@ -1,5 +1,6 @@
 package model.DAO;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,8 +49,8 @@ public class InvestorDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into Investor(id, fName, lName, industry, firmName, email, password, phoneNumber, address, description ) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into Investor(id, fName, lName, industry, firmName, email, password, phoneNumber, address, description, displayPicture ) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)");
 			pstmt.setString(1, "");//TO-DO create an id generator
 			pstmt.setString(2, investor.getFirstName());
 			pstmt.setString(3, investor.getLastName());
@@ -60,6 +61,7 @@ public class InvestorDAO {
 			pstmt.setString(8, investor.getPhoneNumber());
 			pstmt.setString(9, investor.getAddress()); 
 			pstmt.setString(10,investor.getDescription());
+			pstmt.setBlob(11,  investor.getDisplayPicture());
 			
 			//execute the preparedStatement
 			return pstmt.execute();
@@ -76,10 +78,10 @@ public class InvestorDAO {
 		ArrayList<Investor> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE name = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Investor WHERE name = ?");
 			pstmt.setString(1,  name);
 			String industry, firmName, fName, lName, password, email, phoneNumber,  address, description;
-			String displayPicture = "";
+			InputStream displayPicture = null;
 			
 			ResultSet result = pstmt.executeQuery();
 			
@@ -93,6 +95,7 @@ public class InvestorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
+				displayPicture = (InputStream) result.getBlob(11);
 				Investor investor = new Investor(industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);
@@ -110,12 +113,12 @@ public class InvestorDAO {
 
 		ArrayList<Investor> list = new ArrayList<>();
 		String industry, firmName, fName, lName, password, email, phoneNumber,  address, description;
-		String displayPicture = "";
+		InputStream displayPicture = null;
 
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from investor");
+            ResultSet result = statement.executeQuery("select * from Investor");
 
             while(result.next()){
             	fName = result.getString(2);
@@ -127,6 +130,7 @@ public class InvestorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
+				displayPicture = (InputStream) result.getBlob(11);
 				Investor investor = new Investor(industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);

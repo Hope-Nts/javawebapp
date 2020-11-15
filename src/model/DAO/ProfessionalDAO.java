@@ -1,5 +1,6 @@
 package model.DAO;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ public class ProfessionalDAO {
 		String dbId = "";
 		LoginToken token =  new LoginToken(dbId, false);
 		try {
-			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Investor");
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Professional");
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
@@ -48,8 +49,8 @@ public class ProfessionalDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into Professional(id, fName, lName, industry, qualification,experience, satus, email, password, phoneNumber, address, description ) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into Professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, "");//TO-DO create an id generator
 			pstmt.setString(2, professional.getFirstName());
 			pstmt.setString(3, professional.getLastName());
@@ -62,6 +63,7 @@ public class ProfessionalDAO {
 			pstmt.setString(10, professional.getPhoneNumber());
 			pstmt.setString(11, professional.getAddress()); 
 			pstmt.setString(12,professional.getDescription());
+			pstmt.setBlob(13, professional.getDisplayPicture());
 			
 			//execute the preparedStatement
 			return pstmt.execute();
@@ -78,10 +80,10 @@ public class ProfessionalDAO {
 		ArrayList<Professional> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE name = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE name = ?");
 			pstmt.setString(1,  name);
 			String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
-			String displayPicture = "";
+			InputStream displayPicture = null;
 			
 			ResultSet result = pstmt.executeQuery();
 			
@@ -96,7 +98,8 @@ public class ProfessionalDAO {
 				password = result.getString(9);
 				phoneNumber = result.getString(10);
 				address = result.getString(11);
-				description = result.getString(11);
+				description = result.getString(12);
+				displayPicture = (InputStream) result.getBlob(13);
 				Professional professional = new Professional( experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
@@ -114,11 +117,11 @@ public class ProfessionalDAO {
 
 		ArrayList<Professional> list = new ArrayList<>();
 		String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
-		String displayPicture = "";
+		InputStream displayPicture = null;
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from investor");
+            ResultSet result = statement.executeQuery("select * from Professional");
 
             while(result.next()){
             	fName = result.getString(2);
@@ -131,7 +134,8 @@ public class ProfessionalDAO {
 				password = result.getString(9);
 				phoneNumber = result.getString(10);
 				address = result.getString(11);
-				description = result.getString(11);
+				description = result.getString(12);
+				displayPicture = (InputStream) result.getBlob(13);
 				Professional professional = new Professional( experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);

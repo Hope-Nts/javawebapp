@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,22 +54,19 @@ public class CompanyDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into company(name, industry, email, password, phone, address, description, portfolio ) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into company(id, name, industry, email, password, phone, address, description, portfolio, displayPictre ) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
-			//TO-DO deal with base 64 conversions of the string so it can be added to the db as a byte array
-			String portfolio = company.getPortfolio(); //getting the portfolio of file type
-			int fileLength = (int)portfolio.length(); //getting the length of the file for the inputStream
-			FileInputStream fileInputStream = new FileInputStream(portfolio); //used for reading byte-oriented data (streams of raw bytes) such as image data
-			
-			pstmt.setString(1, company.getCompanyName());
-			pstmt.setString(2, company.getIndustry());
-			pstmt.setString(3, company.getEmail());
-			pstmt.setString(4, company.getPassword());
-			pstmt.setString(5, company.getPhoneNumber());
-			pstmt.setString(6, company.getAddress());
-			pstmt.setString(7, company.getDescription());
-			pstmt.setBinaryStream(8, fileInputStream, fileLength); 
+			pstmt.setString(1, ""); // TO-DO id generator
+			pstmt.setString(2, company.getCompanyName());
+			pstmt.setString(3, company.getIndustry());
+			pstmt.setString(4, company.getEmail());
+			pstmt.setString(5, company.getPassword());
+			pstmt.setString(6, company.getPhoneNumber());
+			pstmt.setString(7, company.getAddress());
+			pstmt.setString(8, company.getDescription());
+			pstmt.setBlob(9, company.getPortfolio());
+			pstmt.setBlob(10, company.getDisplayPicture()); 
 			
 			//execute the preparedStatement
 			return pstmt.execute();
@@ -88,20 +86,22 @@ public class CompanyDAO {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM company WHERE name = ?");
 			pstmt.setString(1,  name);
 			String username,password, email, phoneNumber, address, description, companyName, industry;
-			String portfolio ="";
-			String displayPicture = "";
+			InputStream portfolio = null;
+			InputStream displayPicture = null;
 
 			ResultSet result = pstmt.executeQuery();
 			
 			if(result.next()) {
-				companyName = result.getString(1);
-				industry = result.getString(2);
-				email = result.getString(3);
-				password = result.getString(4);
-				phoneNumber = result.getString(5);
-				address = result.getString(6);
-				description = result.getString(7);
-				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description,displayPicture);
+				companyName = result.getString(2);
+				industry = result.getString(3);
+				email = result.getString(4);
+				password = result.getString(5);
+				phoneNumber = result.getString(6);
+				address = result.getString(7);
+				description = result.getString(8);
+				portfolio = (InputStream) result.getBlob(9);
+				displayPicture = (InputStream) result.getBlob(10);
+				Company company = new Company(companyName,industry, portfolio, password, email, phoneNumber, address, description,displayPicture);
 				list.add(company);
 			}
 			
@@ -156,7 +156,8 @@ public class CompanyDAO {
 
         ArrayList<Company> list = new ArrayList<>();
 		String username,password, email, phoneNumber, address, description, companyName, industry;
-		String displayPicture = "";
+		InputStream displayPicture = null;
+		InputStream portfolio = null;
 
 
         try{
@@ -164,14 +165,16 @@ public class CompanyDAO {
             ResultSet result = statement.executeQuery("select * from company");
 
             while(result.next()){
-            	companyName = result.getString(1);
-				industry = result.getString(2);
-				email = result.getString(3);
-				password = result.getString(4);
-				phoneNumber = result.getString(5);
-				address = result.getString(6);
-				description = result.getString(7);
-				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description, displayPicture);
+            	companyName = result.getString(2);
+				industry = result.getString(3);
+				email = result.getString(4);
+				password = result.getString(5);
+				phoneNumber = result.getString(6);
+				address = result.getString(7);
+				description = result.getString(8);
+				portfolio = (InputStream) result.getBlob(9);
+				displayPicture = (InputStream) result.getBlob(10);
+				Company company = new Company(companyName,industry,portfolio, password, email, phoneNumber, address, description, displayPicture);
 				list.add(company);
             }
             
@@ -181,4 +184,5 @@ public class CompanyDAO {
             return list;
         }
     }
+	
 }

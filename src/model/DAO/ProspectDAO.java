@@ -1,5 +1,152 @@
 package model.DAO;
 
-public class ProspectDAO {
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
+import model.Beans.Prospect;
+import model.Beans.LoginToken;
+
+public class ProspectDAO {
+	
+	DbConnection dbc = new DbConnection();
+	Connection con = dbc.getConnection();
+	
+	public ProspectDAO(){}
+	
+	//Company login method
+	public LoginToken login(String email, String password) {
+		String dbId = "";
+		LoginToken token =  new LoginToken(dbId, false);
+		try {
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Professional");
+			ResultSet result = pstmt.executeQuery();
+			
+			while(result.next()) {
+				dbId = result.getString(1);
+				String dbEmail = result.getString(2);
+				String dbPassword = result.getString(3);
+				if(dbEmail.equals(email) && dbPassword.equals(password)) {
+					token = new LoginToken(dbId, true);
+					break;
+				}else {
+					token = new LoginToken(dbId, false);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return token;
+	}
+	
+	//insert Company DB method
+	public Boolean insertProfessional(Prospect prospect){
+		
+		try {
+			
+			PreparedStatement pstmt = con.prepareStatement("insert into Professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			pstmt.setString(1, "");//TO-DO create an id generator
+			pstmt.setString(2, prospect.getFirstName());
+			pstmt.setString(3, prospect.getLastName());
+			pstmt.setString(4, prospect.getLevel());
+			pstmt.setString(5, prospect.getCurrentQualification());
+			pstmt.setString(6, prospect.getObtainedQualification());
+			pstmt.setString(7, prospect.getExpectedDateOfCompletion());
+			pstmt.setString(8, prospect.getEmail());
+			pstmt.setString(9, prospect.getPassword());
+			pstmt.setString(10, prospect.getPhoneNumber());
+			pstmt.setString(11, prospect.getAddress()); 
+			pstmt.setString(12,prospect.getDescription());
+			pstmt.setBlob(13, prospect.getDisplayPicture());
+			
+			//execute the preparedStatement
+			return pstmt.execute();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//searching advisor method
+	public ArrayList<Prospect>  searchProffesional(String name) {
+	
+		ArrayList<Prospect> list = new ArrayList<>();
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE name = ?");
+			pstmt.setString(1,  name);
+			String level, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
+			InputStream displayPicture = null;
+			
+			ResultSet result = pstmt.executeQuery();
+			
+			while(result.next()) {
+				fName = result.getString(2);
+				lName = result.getString(3);
+				level = result.getString(4);
+				currentQualification = result.getString(5);
+				obtainedQualification =result.getString(6);
+				expectedDateOfCompletion = result.getString(7);
+				email = result.getString(8);
+				password = result.getString(9);
+				phoneNumber = result.getString(10);
+				address = result.getString(11);
+				description = result.getString(12);
+				displayPicture = (InputStream) result.getBlob(13);
+				Prospect professional = new Prospect( level, currentQualification, obtainedQualification, expectedDateOfCompletion,
+						fName, lName, password, email, phoneNumber, address, description, displayPicture);
+				list.add(professional);
+			}
+			
+			//Company foundCompany = (Company)list.get(0);
+			return list;
+		}catch(Exception e) {
+			return null;
+		}
+	}
+	
+	// method returns advisor list to be displayed in the directory
+	public ArrayList<Prospect> getCompanies(){
+
+		ArrayList<Prospect> list = new ArrayList<>();
+		String level, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
+		InputStream displayPicture = null;
+
+        try{
+            Statement statement = con.createStatement();
+            ResultSet result = statement.executeQuery("select * from Professional");
+
+            while(result.next()){
+            	fName = result.getString(2);
+				lName = result.getString(3);
+				level = result.getString(4);
+				currentQualification = result.getString(5);
+				obtainedQualification =result.getString(6);
+				expectedDateOfCompletion = result.getString(7);
+				email = result.getString(8);
+				password = result.getString(9);
+				phoneNumber = result.getString(10);
+				address = result.getString(11);
+				description = result.getString(12);
+				displayPicture = (InputStream) result.getBlob(13);
+				Prospect professional = new Prospect(level, currentQualification, obtainedQualification, expectedDateOfCompletion,
+						fName, lName, password, email, phoneNumber, address, description, displayPicture);
+				list.add(professional);
+            }
+            
+        }catch(Exception e){     	
+            e.printStackTrace();        
+        }finally{
+            return list;
+        }
+    }
+	
+	
 }

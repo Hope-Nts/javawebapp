@@ -51,8 +51,8 @@ public class BusinessAdvisorDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into BusinessAdvisor(id,fName, lName, advisorType, status, email, password, phoneNumber, address, description ) "
-					+ "VALUES(?,?, ?, ?, ?, ?, ?, ?, ?,?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into BusinessAdvisor(id,fName, lName, advisorType, status, email, password, phoneNumber, address, description, displayPicture) "
+					+ "VALUES(?,?, ?, ?, ?, ?, ?, ?, ?,?, ?)");
 			pstmt.setString(1, "");//TO-DO id generator
 			pstmt.setString(2, businessAdvisor.getFirstName());
 			pstmt.setString(3, businessAdvisor.getLastName());
@@ -63,7 +63,7 @@ public class BusinessAdvisorDAO {
 			pstmt.setString(8, businessAdvisor.getPhoneNumber());
 			pstmt.setString(9, businessAdvisor.getAddress()); 
 			pstmt.setString(10,businessAdvisor.getDescription());
-			
+			pstmt.setBlob(11, businessAdvisor.getDisplayPicture());
 			//execute the preparedStatement
 			return pstmt.execute();
 			
