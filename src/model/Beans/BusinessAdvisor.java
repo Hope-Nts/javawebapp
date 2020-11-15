@@ -1,5 +1,7 @@
 package model.Beans;
 
+import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class BusinessAdvisor extends Individual implements Serializable{
@@ -13,8 +15,8 @@ public class BusinessAdvisor extends Individual implements Serializable{
 	public BusinessAdvisor() {}
 	
 	public BusinessAdvisor(String advisorType, String employmentStatus,
-			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
-		super(fName, lName, password, email, phoneNumber, address, description);
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description,InputStream displayPicture) {
+		super(fName, lName, password, email, phoneNumber, address, description, displayPicture);
 		
 		this.advisorType = advisorType;
 		this.employmentStatus = employmentStatus;

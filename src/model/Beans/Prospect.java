@@ -1,4 +1,6 @@
 package model.Beans;
+import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class Prospect extends Individual implements Serializable {
@@ -12,8 +14,8 @@ public class Prospect extends Individual implements Serializable {
 	public Prospect() {}
 	
 	public Prospect(String level, String currentQualification, String obtainedQualification, String expectedDateOfCompletion,
-			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
-		super(fName, lName, password, email, phoneNumber, address, description);		
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
+		super(fName, lName, password, email, phoneNumber, address, description, displayPicture);		
 		
 		this.level = level;
 		this.currentQualification = currentQualification;

@@ -20,6 +20,8 @@ public class CompanyDAO {
 	DbConnection dbc = new DbConnection();
 	Connection con = dbc.getConnection();
 	
+	public CompanyDAO() {}
+	
 	//Company login method
 	public LoginToken login(String email, String password) {
 		String dbId = "";
@@ -54,7 +56,8 @@ public class CompanyDAO {
 			PreparedStatement pstmt = con.prepareStatement("insert into company(name, industry, email, password, phone, address, description, portfolio ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 			
-			File portfolio = company.getPortfolio(); //getting the portfolio of file type
+			//TO-DO deal with base 64 conversions of the string so it can be added to the db as a byte array
+			String portfolio = company.getPortfolio(); //getting the portfolio of file type
 			int fileLength = (int)portfolio.length(); //getting the length of the file for the inputStream
 			FileInputStream fileInputStream = new FileInputStream(portfolio); //used for reading byte-oriented data (streams of raw bytes) such as image data
 			
@@ -85,7 +88,8 @@ public class CompanyDAO {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM company WHERE name = ?");
 			pstmt.setString(1,  name);
 			String username,password, email, phoneNumber, address, description, companyName, industry;
-			File portfolio;
+			String portfolio ="";
+			String displayPicture = "";
 
 			ResultSet result = pstmt.executeQuery();
 			
@@ -97,7 +101,7 @@ public class CompanyDAO {
 				phoneNumber = result.getString(5);
 				address = result.getString(6);
 				description = result.getString(7);
-				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description);
+				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description,displayPicture);
 				list.add(company);
 			}
 			
@@ -152,6 +156,7 @@ public class CompanyDAO {
 
         ArrayList<Company> list = new ArrayList<>();
 		String username,password, email, phoneNumber, address, description, companyName, industry;
+		String displayPicture = "";
 
 
         try{
@@ -166,7 +171,7 @@ public class CompanyDAO {
 				phoneNumber = result.getString(5);
 				address = result.getString(6);
 				description = result.getString(7);
-				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description);
+				Company company = new Company(companyName,industry,password, email, phoneNumber, address, description, displayPicture);
 				list.add(company);
             }
             

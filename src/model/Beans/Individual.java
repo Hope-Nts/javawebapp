@@ -1,4 +1,6 @@
 package model.Beans;
+import java.io.File;
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class Individual extends User implements Serializable{
@@ -10,8 +12,8 @@ public class Individual extends User implements Serializable{
 	
 	public Individual() {}
 	
-	public Individual(String fName, String lName,String password, String email, String phoneNumber, String address, String description ) {
-		super(password, email, phoneNumber, address, description);
+	public Individual(String fName, String lName,String password, String email, String phoneNumber, String address, String description, InputStream displayPicture ) {
+		super(password, email, phoneNumber, address, description, displayPicture);
 		this.firstName = fName; 
 		this.lastName = lName;
 	}

@@ -1,11 +1,9 @@
 package model.DAO;
 
-import java.sql.Connection;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +17,8 @@ public class BusinessAdvisorDAO {
 	
 	DbConnection dbc = new DbConnection();
 	Connection con = dbc.getConnection();
+	
+	public BusinessAdvisorDAO(){}
 	
 	//Company login method
 	public LoginToken login(String email, String password) {
@@ -51,17 +51,18 @@ public class BusinessAdvisorDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into BusinessAdvisor(fName, lName, adisorType, status, email, password, phoneNumber, address, description ) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?,?)");
-			pstmt.setString(1, businessAdvisor.getFirstName());
-			pstmt.setString(2, businessAdvisor.getLastName());
-			pstmt.setString(3, businessAdvisor.getAdvisorType());
-			pstmt.setString(4, businessAdvisor.getEmploymentStatus());
-			pstmt.setString(5, businessAdvisor.getEmail());
-			pstmt.setString(6, businessAdvisor.getPassword());
-			pstmt.setString(7, businessAdvisor.getPhoneNumber());
-			pstmt.setString(8, businessAdvisor.getAddress()); 
-			pstmt.setString(9,businessAdvisor.getDescription());
+			PreparedStatement pstmt = con.prepareStatement("insert into BusinessAdvisor(id,fName, lName, advisorType, status, email, password, phoneNumber, address, description ) "
+					+ "VALUES(?,?, ?, ?, ?, ?, ?, ?, ?,?)");
+			pstmt.setString(1, "");//TO-DO id generator
+			pstmt.setString(2, businessAdvisor.getFirstName());
+			pstmt.setString(3, businessAdvisor.getLastName());
+			pstmt.setString(4, businessAdvisor.getAdvisorType());
+			pstmt.setString(5, businessAdvisor.getEmploymentStatus());
+			pstmt.setString(6, businessAdvisor.getEmail());
+			pstmt.setString(7, businessAdvisor.getPassword());
+			pstmt.setString(8, businessAdvisor.getPhoneNumber());
+			pstmt.setString(9, businessAdvisor.getAddress()); 
+			pstmt.setString(10,businessAdvisor.getDescription());
 			
 			//execute the preparedStatement
 			return pstmt.execute();
@@ -81,21 +82,24 @@ public class BusinessAdvisorDAO {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE name = ?");
 			pstmt.setString(1,  name);
 			String advisorType, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
+			InputStream displayPicture ;
 			
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
-				fName = result.getString(1);
-				lName = result.getString(2);
-				advisorType = result.getString(3);
-				employmentStatus = result.getString(4);
-				email = result.getString(5);
-				password = result.getString(6);
-				phoneNumber = result.getString(7);
-				address = result.getString(8);
-				description = result.getString(9);
+				fName = result.getString(2);
+				lName = result.getString(3);
+				advisorType = result.getString(4);
+				employmentStatus = result.getString(5);
+				email = result.getString(6);
+				password = result.getString(7);
+				phoneNumber = result.getString(8);
+				address = result.getString(9);
+				description = result.getString(10);
+				displayPicture = (InputStream) result.getBlob(11);
+				
 				BusinessAdvisor advisor = new BusinessAdvisor(advisorType, employmentStatus,
-						fName, lName, password, email, phoneNumber, address, description);
+						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(advisor);
 			}
 			
@@ -111,6 +115,7 @@ public class BusinessAdvisorDAO {
 
 		ArrayList<BusinessAdvisor> list = new ArrayList<>();
 		String advisorType, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
+		InputStream displayPicture = null;
 
 
         try{
@@ -118,17 +123,18 @@ public class BusinessAdvisorDAO {
             ResultSet result = statement.executeQuery("select * from company");
 
             while(result.next()){
-            	fName = result.getString(1);
-				lName = result.getString(2);
-				advisorType = result.getString(3);
-				employmentStatus = result.getString(4);
-				email = result.getString(5);
-				password = result.getString(6);
-				phoneNumber = result.getString(7);
-				address = result.getString(8);
-				description = result.getString(9);
+            	fName = result.getString(2);
+				lName = result.getString(3);
+				advisorType = result.getString(4);
+				employmentStatus = result.getString(5);
+				email = result.getString(6);
+				password = result.getString(7);
+				phoneNumber = result.getString(8);
+				address = result.getString(9);
+				description = result.getString(10);
+				displayPicture = (InputStream) result.getBlob(11);
 				BusinessAdvisor advisor = new BusinessAdvisor(advisorType, employmentStatus,
-						fName, lName, password, email, phoneNumber, address, description);
+						fName, lName, password, email, phoneNumber, address, description,displayPicture);
 				list.add(advisor);
             }
             
