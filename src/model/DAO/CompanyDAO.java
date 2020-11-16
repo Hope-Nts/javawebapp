@@ -54,10 +54,10 @@ public class CompanyDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into company(id, name, industry, email, password, phone, address, description, portfolio, displayPictre ) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = con.prepareStatement("insert into company(id, name, industry, email, password, phoneNumber, address, description, portfolio, displayPicture ) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
-			pstmt.setString(1, ""); // TO-DO id generator
+			pstmt.setString(1, "00"); // TO-DO id generator
 			pstmt.setString(2, company.getCompanyName());
 			pstmt.setString(3, company.getIndustry());
 			pstmt.setString(4, company.getEmail());

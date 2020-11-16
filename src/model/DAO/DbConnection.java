@@ -9,8 +9,8 @@ public class DbConnection {
 	Connection conn  = null;
 	
 	//TO-DO change the database pointer
-	String url = "jdbc:mysql://localhost:3306/awdcse18-066?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-	
+	String url = "jdbc:mysql://localhost:3306/francistowndigitalcity?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	//
 	public Connection getConnection() {
 		System.out.println("Test Connection");
 		try {
