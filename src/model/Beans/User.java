@@ -84,7 +84,7 @@ public class User implements Serializable{
 		this.displayPicture = displayPicture;
 	}
 	
-	//method used when displaying the diplay picture in the jstl tag
+	//method used when displaying the display picture in the jstl tag
 	public String getStringBase64TypeDisplayPicture() {
 		ByteArrayOutputStream outputStream  = new ByteArrayOutputStream();
 		byte [] buffer = new byte[4096];

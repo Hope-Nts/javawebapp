@@ -1,0 +1,207 @@
+@charset "ISO-8859-1";
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+a {
+  cursor: pointer;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/*
+  -header 
+  -navigation bar
+  -hero image section
+*/
+.home-header {
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("./img/heroimage1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.nav-bar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  border-bottom: 2px solid black;
+  display: flex;
+  padding: 0px 5% 0px 5%;
+  height: 10vh;
+  align-items: center;
+  background-color: white;
+}
+.logo-container,
+.nav-links,
+.search,
+.profile {
+  display: flex;
+}
+.logo-container {
+  flex: 1;
+}
+.logo-container img {
+  height: 9vh;
+}
+nav {
+  flex: 3;
+}
+.nav-links {
+  justify-content: space-around;
+  list-style: none;
+}
+.nav-link {
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+}
+.search {
+  flex: 1;
+  justify-content: flex-end;
+}
+.profile {
+  flex: 0.5;
+  cursor: pointer;
+  justify-content: flex-end;
+}
+.profile img {
+  height: 5vh;
+}
+.hero-content {
+  margin: 45vh 10vh 0 0;
+  width: 50%;
+  float: right;
+}
+/*
+  main content styling
+*/
+section {
+  width: 90%;
+  margin: auto;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.section-heading {
+  text-align: center;
+  margin: 2% 0px 2% 0px;
+}
+
+.intro {
+  display: flex;
+}
+.intro-img img {
+  width: 100%;
+}
+.intro-img {
+  padding: 2%;
+  flex: 1;
+}
+.intro-txt {
+  padding: 2%;
+  flex: 1;
+}
+.applicatants-container {
+  display: flex;
+}
+.applicant {
+  flex: 1;
+  margin: 5px;
+}
+.applicant img {
+  width: 100%;
+}
+
+.last-paragraph {
+  text-align: center;
+}
+
+.footer {
+  background-color: black;
+}
+
+/*==================================================================================================================
+directory css*/
+.directory-inputs {
+  width: 90%;
+  margin: auto;
+  margin-top: 12vh;
+}
+.directory-inputs form {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.type-input {
+  flex: 1;
+}
+.industry-input {
+  flex: 1;
+}
+.keyword-input {
+  flex: 1;
+}
+
+.search-result {
+  width: 100%;
+  margin: 5px 0px 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: space-around;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.search-result ul {
+  list-style: none;
+}
+
+.display-picture img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.display-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.information {
+  padding: 2%;
+  flex: 3;
+}
+
+/*
+=========================================================================================================
+about us page
+*/
+.aboutUs-main {
+  margin-top: 12vh;
+}
+
+.stakeholder {
+  display: flex;
+}
+.stakeholder-img img {
+  width: 100%;
+}
+.stakeholder-img {
+  padding: 2%;
+  flex: 1;
+}
+.stakeholder-txt {
+  padding: 2%;
+  flex: 1;
+}

@@ -77,7 +77,7 @@ public class SignUpServlet extends HttpServlet {
 	      //getting the displayPicure file from the request
 			InputStream displayPicture = null; // input stream of the upload file
 	        // obtains the upload file part in this multipart request
-	        Part displayPictureFilePart = request.getPart("portfolio");
+	        Part displayPictureFilePart = request.getPart("displayPicture");
 	        if (displayPictureFilePart != null) {
 	            // prints out some information for debugging
 	            System.out.println(displayPictureFilePart.getName());
