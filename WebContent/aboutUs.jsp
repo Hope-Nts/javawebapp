@@ -36,6 +36,12 @@
           </form>
         </div>
         <div class="profile">
+        	<div class="profile-links">
+	            <ul>
+	              <li><a class="nav-link" href="aboutUs.html">Sign out</a></li>
+	              <li><a class="nav-link" href="aboutUs.html">Profile</a></li>
+	            </ul>
+          	</div>
           <img src="./img/profile.png" alt="cart" />
         </div>
       </div>
