@@ -86,6 +86,7 @@ nav {
   background-color: rgba(231, 229, 229, 0.986);
   color: white;
 }
+
 .profile:hover .profile-links {
   visibility: visible;
   transition: visibility 0.3s linear, opacity 0.3s linear;
@@ -99,6 +100,13 @@ nav {
 .profile-links ul li {
   border: 1px solid black;
   padding: 10px;
+}
+.profile-links input[type="submit"] {
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  background: transparent;
+  cursor: pointer;
 }
 .profile-links ul {
   list-style: none;
@@ -236,7 +244,7 @@ about us page
 sign in
 */
 .signin-main {
-  padding-top: 5%;
+  padding-top: 3%;
 }
 .login-section {
   width: 50%;
@@ -276,13 +284,14 @@ sign up form styling
 .signUp-main {
   background-image: linear-gradient(
       rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0.5)
+      rgba(255, 255, 255, 0.3)
     ),
     url("./img/heroimage1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  padding-bottom: 7px;
 }
 .signUp-section {
   width: 80%;
@@ -297,7 +306,8 @@ sign up form styling
 }
 .tab-menu {
   overflow: hidden;
-  width: 55%;
+  padding-left: 40px;
+  width: 50%;
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 40px;
@@ -309,9 +319,9 @@ sign up form styling
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 14px 13px;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 15px;
 }
 .tab-menu button:hover {
   background-color: #ddd;
@@ -364,7 +374,7 @@ sign up form styling
 .signUpForm select {
   width: 90%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px 0px;
   display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -374,4 +384,78 @@ sign up form styling
   margin: 8px 0;
   border-radius: 4px;
   font-size: 1rem;
+}
+
+.signing-footer {
+  width: 100%;
+  background-color: black;
+  padding: 10px;
+}
+.signing-footer-text {
+  background-color: black;
+  color: white;
+  width: 30%;
+  margin: auto;
+}
+/*
+==============================================================================================================
+CompanyProfile 
+*/
+.company-profile-main {
+  padding: 10px 0;
+  margin-top: 10vh;
+  width: 100%;
+}
+
+.edit-btn {
+  float: right;
+  display: block;
+}
+.profile-section {
+  padding: 20px 0px;
+}
+.profile-user-info {
+  width: 90%;
+
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-img {
+  padding: 10px;
+  flex: 1;
+}
+.profile-img img {
+  width: 100%;
+}
+.profile-info {
+  padding: 20px 15px;
+  flex: 3;
+  border: 2px solid black;
+  background-color: rgb(240, 240, 240, 0.5);
+  border-radius: 20px;
+}
+.profile-info span {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.profile-info p {
+  margin-bottom: 2.5px;
+}
+.edit-btn input[type="submit"] {
+  cursor: pointer;
+  padding: 10px 12px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+.profile-description {
+  padding: 20px;
+  border: 2px solid rgb(240, 240, 240, 0.5);
+  background-color: rgb(240, 240, 240, 0.5);
+  border-radius: 20px;
+  width: 90%;
+  margin: auto;
 }

@@ -17,7 +17,7 @@
     <main class="signin-main">
       <section class="login-section">
         <div class="signIn-logo">
-          <img src="img/LOGO.png" alt="logo" />
+          <a href="index.jsp"><img src="./img/LOGO.png" alt="" /></a>
         </div>
         <div class="sign-in-fields">
           <form action="loginServlet" method="GET">
@@ -33,5 +33,13 @@
         </div>
       </section>
     </main>
+    <footer class="signing-footer">
+      <div class="signing-footer-text">
+        <p>
+          Enter website as guest without registering
+          <a href="index.jsp">Home</a>
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

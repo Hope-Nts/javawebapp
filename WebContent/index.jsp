@@ -35,12 +35,17 @@
           </form>
         </div>
         <div class="profile">
-        	<div class="profile-links">
-	            <ul>
-	              <li><a class="nav-link" href="signIn.jsp">Sign out</a></li>
-	              <li><a class="nav-link" href="aboutUs.html">Profile</a></li>
-	            </ul>
-          	</div>
+          <div class="profile-links">
+            <ul>
+              <li><a class="nav-link" href="signIn.html">Sign out</a></li>
+              <li>
+                <form action="companyProfile.jsp">
+                  <input type="hidden" value="${loginToken.id }" />
+                  <input type="submit" value="Profile" />
+                </form>
+              </li>
+            </ul>
+          </div>
           <img src="./img/profile.png" alt="cart" />
         </div>
       </div>
