@@ -19,8 +19,9 @@
         <div class="signIn-logo">
           <a href="index.jsp"><img src="./img/LOGO.png" alt="" /></a>
         </div>
+        <span>${message}</span>
         <div class="sign-in-fields">
-          <form action="loginServlet" method="GET">
+          <form action="LoginServlet" method="GET">
             <label>Email:</label>
             <input type="email" name="email" />
             <label>Password:</label>

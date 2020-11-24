@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Beans.LoginToken;
 import model.DAO.BusinessAdvisorDAO;
@@ -29,18 +30,42 @@ public class LoginServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    String url = "/signIn.jsp";
+    String message = "Unsuccessfull login,check email or password";
 	BusinessAdvisorDAO businessAdvisor = new BusinessAdvisorDAO();
 	CompanyDAO company = new CompanyDAO();
 	InvestorDAO investor = new InvestorDAO();
 	ProfessionalDAO professional = new ProfessionalDAO();
 	ProspectDAO prospect = new ProspectDAO();
-	LoginToken loginToken = new LoginToken();
+	LoginToken loginToken = new LoginToken("", false);
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String userType;
+		//LoginToken advisorLogin = businessAdvisor.login(email, password);
+		LoginToken companyLogin = company.login(email, password);
+		//LoginToken investorLogin = investor.login(email, password);
+		//LoginToken professionalLogin = professional.login(email, password);
+		//LoginToken prospectLogin = prospect.login(email, password);
+		//LoginToken [] tokens = {advisorLogin,companyLogin,investorLogin,investorLogin,prospectLogin,professionalLogin};
+		LoginToken [] tokens = {companyLogin};
+		
+		for(int i = 0; i < tokens.length; i++) {
+			if(tokens[i].isLoggedIn() == true) {
+				loginToken = tokens[i];
+				url = "/index.jsp";
+				message = "";
+				break;
+			}
+		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("loginToken", loginToken);
+		request.setAttribute("message", message);
+		 getServletContext()
+		 	.getRequestDispatcher(url)
+		 	.forward(request, response);
 		
 	}
 
