@@ -52,7 +52,7 @@
     </header>
     <main class="company-profile-main">
       <section class="profile-section">
-      <h1 class="section-heading">Profile</h1>
+       <h1 class="section-heading">Profile</h1>
         <div class="profile-user-info">
           <div class="profile-img">
             <img src="./img/profile.png" alt="" />
@@ -64,13 +64,13 @@
                 <input type="submit" value="Edit" />
               </form>
             </div>
-            <h2>Company</h2>
+            <h2>Business Advisor</h2>
             <p><span>Name:</span></p>
-            <p><span>Industry:</span></p>
             <p><span>Email:</span>Email:</p>
+            <p><span>Advisor Type:</span>Email:</p>
+            <p><span>Employment Status:</span>Email:</p>
             <p><span>Phone:</span>Phone:</p>
-            <p><span>Addreas:</span>Address:</p>
-            <p><a href="portfolio">Portfolio</a></p>
+            <p><span>Address:</span>Address:</p>
           </div>
         </div>
         <br />

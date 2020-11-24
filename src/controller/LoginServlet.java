@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Beans.LoginToken;
+import model.DAO.BusinessAdvisorDAO;
+import model.DAO.CompanyDAO;
+import model.DAO.InvestorDAO;
+import model.DAO.ProfessionalDAO;
+import model.DAO.ProspectDAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -21,13 +28,20 @@ public class LoginServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+	BusinessAdvisorDAO businessAdvisor = new BusinessAdvisorDAO();
+	CompanyDAO company = new CompanyDAO();
+	InvestorDAO investor = new InvestorDAO();
+	ProfessionalDAO professional = new ProfessionalDAO();
+	ProspectDAO prospect = new ProspectDAO();
+	LoginToken loginToken = new LoginToken();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String userType;
+		
 	}
 
 	/**

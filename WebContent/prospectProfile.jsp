@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="ISO-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
@@ -64,13 +64,15 @@
                 <input type="submit" value="Edit" />
               </form>
             </div>
-            <h2>Company</h2>
+            <h2>Prospect</h2>
             <p><span>Name:</span></p>
-            <p><span>Industry:</span></p>
             <p><span>Email:</span>Email:</p>
+            <p><span>Level:</span>Email:</p>
+            <p><span>Current Qualification:</span>Email:</p>
+            <p><span>Obtained Qualification:</span>Email:</p>
+            <p><span>Date Of Completion:</span>Email:</p>
             <p><span>Phone:</span>Phone:</p>
-            <p><span>Addreas:</span>Address:</p>
-            <p><a href="portfolio">Portfolio</a></p>
+            <p><span>Address:</span>Address:</p>
           </div>
         </div>
         <br />
@@ -88,18 +90,5 @@
         </div>
       </section>
     </main>
-    <footer>
-      <div class="footer">
-        <ul>
-          <li>content</li>
-          <li>content</li>
-          <li>content</li>
-          <li>content</li>
-          <li>content</li>
-          <li>content</li>
-          <li>content</li>
-        </ul>
-      </div>
-    </footer>
   </body>
 </html>

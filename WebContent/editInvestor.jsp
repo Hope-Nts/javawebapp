@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="ISO-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
@@ -23,9 +23,9 @@
         </div>
         <nav>
           <ul class="nav-links">
-            <li><a class="nav-link" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="directory.html">Directory</a></li>
-            <li><a class="nav-link" href="aboutUs.html">About Us</a></li>
+            <li><a class="nav-link" href="index.jsp">Home</a></li>
+            <li><a class="nav-link" href="directory.jsp">Directory</a></li>
+            <li><a class="nav-link" href="aboutUs.jsp">About Us</a></li>
             <li><a class="nav-link" href="#">Contact Us</a></li>
           </ul>
         </nav>
@@ -51,40 +51,37 @@
       </div>
     </header>
     <main class="company-profile-main">
-      <section class="profile-section">
       <h1 class="section-heading">Profile</h1>
-        <div class="profile-user-info">
-          <div class="profile-img">
-            <img src="./img/profile.png" alt="" />
-          </div>
-          <div class="profile-info">
-            <div class="edit-btn">
-              <form action="editServlet">
-                <input type="hidden" name="edit" action="edit" />
-                <input type="submit" value="Edit" />
-              </form>
-            </div>
-            <h2>Company</h2>
-            <p><span>Name:</span></p>
-            <p><span>Industry:</span></p>
-            <p><span>Email:</span>Email:</p>
-            <p><span>Phone:</span>Phone:</p>
-            <p><span>Addreas:</span>Address:</p>
-            <p><a href="portfolio">Portfolio</a></p>
-          </div>
-        </div>
-        <br />
-        <div class="profile-description">
-          <h2>Description</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+      <section>
+        <div class="editProfileForm">
+          <form action="updateServlet" method="POST">
+            <input type="submit" value="Update" />
+            <label>First Name</label>
+            <input type="text" name="firstName" />
+            <label>Last Name</label>
+            <input type="text" name="lastName" />
+            <label>Email</label>
+            <input type="email" name="email" />
+            <label>Password</label>
+            <input type="password" name="password" />
+            <label>Industry</label>
+            <select name="industry" name="industry">
+              <option value="IT Infrastructure">IT Infrastructure</option>
+              <option value="Software Development">Software Development</option>
+            </select>
+            <label>Phone</label>
+            <input type="phone" name="phoneNumber" placeholder="+267" />
+            <label>Addres</label>
+            <input type="text" name="address" />
+            <label>Experience *Years</label>
+            <input type="text" name="Experience" />
+            <label>Display Picture</label>
+            <input type="file" name="displayPicture" />
+            <label>Description</label>
+            <textarea name="Description" rows="10" cols="30">
+              Description
+            </textarea>
+          </form>
         </div>
       </section>
     </main>
