@@ -44,6 +44,34 @@ public class InvestorDAO {
 		return token;
 	}
 	
+	//getting a count of objects in the database
+	public String createId() {
+		int userCount = 0;
+		String id = "";
+		try {
+			PreparedStatement pstmt = con.prepareStatement("Select count(*) from investor");
+			ResultSet count = pstmt.executeQuery();
+			count.next();
+			userCount = count.getInt(1);
+			userCount += 1;
+			if((userCount % 10) > 1) {
+				id = "IN00"+ userCount;
+			}else if((userCount % 100) > 1) {
+				id = "IN0"+ userCount;
+			}else if((userCount % 1000) > 1) {
+				id = "IN"+ userCount;
+			}else {
+				id = "IN000"+ userCount;
+			}
+				System.out.print(id);
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			return id;
+		}
+	
 	//insert Company DB method
 	public Boolean insertInvestor(Investor investor){
 		
@@ -80,12 +108,13 @@ public class InvestorDAO {
 		try {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Investor WHERE name = ?");
 			pstmt.setString(1,  name);
-			String industry, firmName, fName, lName, password, email, phoneNumber,  address, description;
+			String industry, firmName, fName, lName, password, email, phoneNumber,  address, description,id;
 			InputStream displayPicture = null;
 			
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
+				id = result.getString(1);
 				fName = result.getString(2);
 				lName = result.getString(3);
 				industry = result.getString(4);
@@ -96,7 +125,7 @@ public class InvestorDAO {
 				address = result.getString(9);
 				description = result.getString(10);
 				displayPicture = (InputStream) result.getBlob(11);
-				Investor investor = new Investor(industry, firmName,
+				Investor investor = new Investor(id, industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);
 			}
@@ -112,7 +141,7 @@ public class InvestorDAO {
 	public ArrayList<Investor> getCompanies(){
 
 		ArrayList<Investor> list = new ArrayList<>();
-		String industry, firmName, fName, lName, password, email, phoneNumber,  address, description;
+		String industry, firmName, fName, lName, password, email, phoneNumber,  address, description, id;
 		InputStream displayPicture = null;
 
 
@@ -121,6 +150,7 @@ public class InvestorDAO {
             ResultSet result = statement.executeQuery("select * from Investor");
 
             while(result.next()){
+            	id = result.getString(1);
             	fName = result.getString(2);
 				lName = result.getString(3);
 				industry = result.getString(4);
@@ -131,7 +161,7 @@ public class InvestorDAO {
 				address = result.getString(9);
 				description = result.getString(10);
 				displayPicture = (InputStream) result.getBlob(11);
-				Investor investor = new Investor(industry, firmName,
+				Investor investor = new Investor(id, industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);
             }

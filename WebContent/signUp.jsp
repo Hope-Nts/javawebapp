@@ -44,9 +44,10 @@
           </button>
         </div>
         <div id="Company" class="signUpForm">
-          <form action="signUpServlet" method="POST">
+          <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="companySignUp" >
             <label>Name</label>
-            <input type="text" name="companyName" />
+            <input type="text" name="name" />
             <label>Industry</label>
             <select name="industry" name="industry">
               <option value="IT Infrastructure">IT Infrastructure</option>
@@ -65,14 +66,14 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               Description
             </textarea>
             <input type="submit" value="Sign Up" />
           </form>
         </div>
         <div id="Prospect" class="signUpForm">
-          <form action="signUpServlet" method="POST">
+          <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -106,7 +107,7 @@
           </form>
         </div>
         <div id="Professional" class="signUpForm">
-          <form action="signUpServlet" method="POST">
+          <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -143,7 +144,7 @@
           </form>
         </div>
         <div id="Advisor" class="signUpForm">
-          <form action="signUpServlet" method="POST">
+          <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -178,7 +179,7 @@
           </form>
         </div>
         <div id="Investor" class="signUpForm">
-          <form action="signUpServlet" method="POST">
+          <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>

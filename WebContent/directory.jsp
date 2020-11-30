@@ -18,7 +18,7 @@
     <header>
       <div class="nav-bar" id="navbar">
         <div class="logo-container">
-          <a class="nav-link" href="index.html"
+          <a class="nav-link" href="index.jsp"
             ><img src="./img/LOGO.png" alt="logo"
           /></a>
         </div>
@@ -38,7 +38,7 @@
         <div class="profile">
           <div class="profile-links">
             <ul>
-              <li><a class="nav-link" href="signIn.html">Sign out</a></li>
+              <li><a class="nav-link" href="signIn.jsp">Sign out</a></li>
               <li>
                 <form action="profileServlet">
                   <input type="hidden" action="profile" value="" />

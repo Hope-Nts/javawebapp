@@ -17,15 +17,15 @@
     <header>
       <div class="nav-bar" id="navbar">
         <div class="logo-container">
-          <a class="nav-link" href="index.html"
+          <a class="nav-link" href="index.jsp"
             ><img src="./img/LOGO.png" alt="logo"
           /></a>
         </div>
         <nav>
           <ul class="nav-links">
-            <li><a class="nav-link" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="directory.html">Directory</a></li>
-            <li><a class="nav-link" href="aboutUs.html">About Us</a></li>
+            <li><a class="nav-link" href="index.jsp">Home</a></li>
+            <li><a class="nav-link" href="directory.jsp">Directory</a></li>
+            <li><a class="nav-link" href="aboutUs.jsp">About Us</a></li>
             <li><a class="nav-link" href="#">Contact Us</a></li>
           </ul>
         </nav>
@@ -37,7 +37,7 @@
         <div class="profile">
           <div class="profile-links">
             <ul>
-              <li><a class="nav-link" href="signIn.html">Sign out</a></li>
+              <li><a class="nav-link" href="signIn.jsp">Sign out</a></li>
               <li>
                 <form action="profileServlet">
                   <input type="hidden" action="profile" value="" />

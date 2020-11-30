@@ -87,13 +87,16 @@ public class SignUpServlet extends HttpServlet {
 	            // obtains input stream of the upload file
 	            displayPicture = displayPictureFilePart.getInputStream();
 	        }
-	        Company newCompany = new Company(name, industry, portfolio, password, email, phoneNumber, address, description, displayPicture);
+	        
 	        CompanyDAO companyDAO = new CompanyDAO();
+	        String id = companyDAO.createId();
+	        Company newCompany = new Company(id,name, industry, portfolio, password, email, phoneNumber, address, description, displayPicture);
+	        
 	        confirmation = companyDAO.insertCompany(newCompany);
 	        if(confirmation = true) {
-	        	url = "/confirmation.jsp";
+	        	url = "/index.jsp";
 	        }else {
-	        	url = "TestSignUp.jsp";
+	        	url = "/index.jsp";
 	        }
 		}
 

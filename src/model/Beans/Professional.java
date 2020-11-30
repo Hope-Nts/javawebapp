@@ -12,9 +12,9 @@ public class Professional extends Individual implements Serializable{
 	
 	public Professional() {}
 
-	public Professional(String experience, String qualifications, String industry, String employmentStatus,
+	public Professional(String id,String experience, String qualifications, String industry, String employmentStatus,
 			String fName, String lName, String password, String email, String phoneNumber, String address, String description,InputStream displayPicture) {
-		super(fName, lName, password, email, phoneNumber, address, description, displayPicture);		
+		super(id,fName, lName, password, email, phoneNumber, address, description, displayPicture);		
 		
 		this.experience = experience;
 		this.qualifications = qualifications;

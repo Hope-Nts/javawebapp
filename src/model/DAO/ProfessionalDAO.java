@@ -44,6 +44,35 @@ public class ProfessionalDAO {
 		return token;
 	}
 	
+	//getting a count of objects in the database
+	public String createId() {
+		int userCount = 0;
+		String id = "";
+		try {
+			PreparedStatement pstmt = con.prepareStatement("Select count(*) from professional");
+			ResultSet count = pstmt.executeQuery();
+			count.next();
+			userCount = count.getInt(1);
+			userCount += 1;
+			if((userCount % 10) > 1) {
+				id = "PF00"+ userCount;
+			}else if((userCount % 100) > 1) {
+				id = "PF0"+ userCount;
+			}else if((userCount % 1000) > 1) {
+				id = "PF"+ userCount;
+			}else {
+				id = "PF000"+ userCount;
+			}
+			System.out.print(id);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
+	
 	//insert Company DB method
 	public Boolean insertProfessional(Professional professional){
 		
@@ -82,12 +111,13 @@ public class ProfessionalDAO {
 		try {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE name = ?");
 			pstmt.setString(1,  name);
-			String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
+			String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description, id;
 			InputStream displayPicture = null;
 			
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
+				id = result.getString(1);
 				fName = result.getString(2);
 				lName = result.getString(3);
 				industry = result.getString(4);
@@ -100,7 +130,7 @@ public class ProfessionalDAO {
 				address = result.getString(11);
 				description = result.getString(12);
 				displayPicture = (InputStream) result.getBlob(13);
-				Professional professional = new Professional( experience, qualifications, industry, employmentStatus,
+				Professional professional = new Professional(id, experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
 			}
@@ -116,7 +146,7 @@ public class ProfessionalDAO {
 	public ArrayList<Professional> getCompanies(){
 
 		ArrayList<Professional> list = new ArrayList<>();
-		String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description;
+		String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description,id;
 		InputStream displayPicture = null;
 
         try{
@@ -124,6 +154,7 @@ public class ProfessionalDAO {
             ResultSet result = statement.executeQuery("select * from Professional");
 
             while(result.next()){
+            	id = result.getString(1);
             	fName = result.getString(2);
 				lName = result.getString(3);
 				industry = result.getString(4);
@@ -136,7 +167,7 @@ public class ProfessionalDAO {
 				address = result.getString(11);
 				description = result.getString(12);
 				displayPicture = (InputStream) result.getBlob(13);
-				Professional professional = new Professional( experience, qualifications, industry, employmentStatus,
+				Professional professional = new Professional(id,experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
             }

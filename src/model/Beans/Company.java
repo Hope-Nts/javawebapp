@@ -11,12 +11,12 @@ public class Company extends User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String companyName, industry, base64portfolio;
+	private String companyName, industry, base64portfolio, id;
 	private InputStream portfolio;
 	public Company() {}
-	
-	public Company(String companyName, String industry, InputStream portfolio,String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
-		super(password, email, phoneNumber, address, description, displayPicture);
+		
+	public Company(String id, String companyName, String industry, InputStream portfolio,String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
+		super(id, password, email, phoneNumber, address, description, displayPicture);
 		this.companyName = companyName;
 		this.industry = industry;
 		this.portfolio = portfolio;

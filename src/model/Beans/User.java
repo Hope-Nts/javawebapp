@@ -10,12 +10,12 @@ import java.util.Base64;
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private String password, email, phoneNumber, address, description;
+	private String password, email, phoneNumber, address, description, id;
 	private String base64DisplayPicture;
 	private InputStream displayPicture;
 	
 	public User() {
-		
+		this.id = ""; 
 		this.password = "";
 		this.email = "";
 		this.phoneNumber ="";
@@ -26,7 +26,8 @@ public class User implements Serializable{
 	}
 	
 	//constructor to be inherited by subclasses
-	public User(String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
+	public User(String id, String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
+		this.id = id;
 		this.password = password;
 		this.email = email;
 		this.phoneNumber =phoneNumber;
@@ -36,6 +37,14 @@ public class User implements Serializable{
 	}
 	
 	//getters and setters	
+	public String getId() {
+		return this.id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getPassword() {
 		return this.password;
 	}

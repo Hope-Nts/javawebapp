@@ -13,9 +13,9 @@ public class Prospect extends Individual implements Serializable {
 	
 	public Prospect() {}
 	
-	public Prospect(String level, String currentQualification, String obtainedQualification, String expectedDateOfCompletion,
+	public Prospect(String id, String level, String currentQualification, String obtainedQualification, String expectedDateOfCompletion,
 			String fName, String lName, String password, String email, String phoneNumber, String address, String description, InputStream displayPicture) {
-		super(fName, lName, password, email, phoneNumber, address, description, displayPicture);		
+		super(id, fName, lName, password, email, phoneNumber, address, description, displayPicture);		
 		
 		this.level = level;
 		this.currentQualification = currentQualification;

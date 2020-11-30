@@ -12,8 +12,8 @@ public class Individual extends User implements Serializable{
 	
 	public Individual() {}
 	
-	public Individual(String fName, String lName,String password, String email, String phoneNumber, String address, String description, InputStream displayPicture ) {
-		super(password, email, phoneNumber, address, description, displayPicture);
+	public Individual(String id, String fName, String lName,String password, String email, String phoneNumber, String address, String description, InputStream displayPicture ) {
+		super(id, password, email, phoneNumber, address, description, displayPicture);
 		this.firstName = fName; 
 		this.lastName = lName;
 	}

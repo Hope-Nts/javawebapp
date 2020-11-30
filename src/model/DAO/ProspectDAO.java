@@ -44,6 +44,35 @@ public class ProspectDAO {
 		return token;
 	}
 	
+	//getting a count of objects in the database
+	public String createId() {
+		int userCount = 0;
+		String id = "";
+		try {
+			PreparedStatement pstmt = con.prepareStatement("Select count(*) from prospect");
+			ResultSet count = pstmt.executeQuery();
+			count.next();
+			userCount = count.getInt(1);
+			userCount += 1;
+			if((userCount % 10) > 1) {
+				id = "PR00"+ userCount;
+			}else if((userCount % 100) > 1) {
+				id = "PR0"+ userCount;
+			}else if((userCount % 1000) > 1) {
+				id = "PR"+ userCount;
+			}else {
+				id = "PR000"+ userCount;
+			}
+			System.out.print(id);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
+	
 	//insert Company DB method
 	public Boolean insertProfessional(Prospect prospect){
 		
@@ -82,12 +111,13 @@ public class ProspectDAO {
 		try {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE name = ?");
 			pstmt.setString(1,  name);
-			String level, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
+			String level, id, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
 			InputStream displayPicture = null;
 			
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
+				id = result.getString(1);
 				fName = result.getString(2);
 				lName = result.getString(3);
 				level = result.getString(4);
@@ -100,7 +130,7 @@ public class ProspectDAO {
 				address = result.getString(11);
 				description = result.getString(12);
 				displayPicture = (InputStream) result.getBlob(13);
-				Prospect professional = new Prospect( level, currentQualification, obtainedQualification, expectedDateOfCompletion,
+				Prospect professional = new Prospect(id, level, currentQualification, obtainedQualification, expectedDateOfCompletion,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
 			}
@@ -116,7 +146,7 @@ public class ProspectDAO {
 	public ArrayList<Prospect> getCompanies(){
 
 		ArrayList<Prospect> list = new ArrayList<>();
-		String level, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
+		String level, id, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
 		InputStream displayPicture = null;
 
         try{
@@ -124,6 +154,7 @@ public class ProspectDAO {
             ResultSet result = statement.executeQuery("select * from Professional");
 
             while(result.next()){
+            	id = result.getString(1);
             	fName = result.getString(2);
 				lName = result.getString(3);
 				level = result.getString(4);
@@ -136,7 +167,7 @@ public class ProspectDAO {
 				address = result.getString(11);
 				description = result.getString(12);
 				displayPicture = (InputStream) result.getBlob(13);
-				Prospect professional = new Prospect(level, currentQualification, obtainedQualification, expectedDateOfCompletion,
+				Prospect professional = new Prospect(id,level, currentQualification, obtainedQualification, expectedDateOfCompletion,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
             }

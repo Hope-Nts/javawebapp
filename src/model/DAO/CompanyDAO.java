@@ -49,6 +49,34 @@ public class CompanyDAO {
 		return token;
 	}
 	
+	//getting a count of objects in the database
+	public String createId() {
+		int userCount = 0;
+		String id = "";
+		try {
+			PreparedStatement pstmt = con.prepareStatement("Select count(*) from company");
+			ResultSet count = pstmt.executeQuery();
+			count.next();
+			userCount = count.getInt(1);
+			userCount += 1;
+			if((userCount % 10) > 1) {
+				id = "CO00"+ userCount;
+			}else if((userCount % 100) > 1) {
+				id = "CO0"+ userCount;
+			}else if((userCount % 1000) > 1) {
+				id = "CO"+ userCount;
+			}else {
+				id = "CO000"+ userCount;
+			}
+			System.out.print(id);
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+	}
+	
 	//insert Company DB method
 	public Boolean insertCompany(Company company) throws FileNotFoundException {
 		
@@ -57,7 +85,7 @@ public class CompanyDAO {
 			PreparedStatement pstmt = con.prepareStatement("insert into company(id, name, industry, email, password, phoneNumber, address, description, portfolio, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			
-			pstmt.setString(1, "00"); // TO-DO id generator
+			pstmt.setString(1, company.getId()); // TO-DO id generator
 			pstmt.setString(2, company.getCompanyName());
 			pstmt.setString(3, company.getIndustry());
 			pstmt.setString(4, company.getEmail());
@@ -85,13 +113,14 @@ public class CompanyDAO {
 		try {
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM company WHERE name = ?");
 			pstmt.setString(1,  name);
-			String username,password, email, phoneNumber, address, description, companyName, industry;
+			String username,password, email, phoneNumber, address, description, companyName, industry, id;
 			InputStream portfolio = null;
 			InputStream displayPicture = null;
 
 			ResultSet result = pstmt.executeQuery();
 			
 			if(result.next()) {
+				id = result.getString(1);
 				companyName = result.getString(2);
 				industry = result.getString(3);
 				email = result.getString(4);
@@ -101,7 +130,7 @@ public class CompanyDAO {
 				description = result.getString(8);
 				portfolio = (InputStream) result.getBlob(9);
 				displayPicture = (InputStream) result.getBlob(10);
-				Company company = new Company(companyName,industry, portfolio, password, email, phoneNumber, address, description,displayPicture);
+				Company company = new Company(id,companyName,industry, portfolio, password, email, phoneNumber, address, description,displayPicture);
 				list.add(company);
 			}
 			
@@ -155,7 +184,7 @@ public class CompanyDAO {
 	public ArrayList<Company> getCompanies(){
 
         ArrayList<Company> list = new ArrayList<>();
-		String username,password, email, phoneNumber, address, description, companyName, industry;
+		String username,password, email, phoneNumber, address, description, companyName, industry,id;
 		InputStream displayPicture = null;
 		InputStream portfolio = null;
 
@@ -165,6 +194,7 @@ public class CompanyDAO {
             ResultSet result = statement.executeQuery("select * from company");
 
             while(result.next()){
+            	id = result.getString(1);
             	companyName = result.getString(2);
 				industry = result.getString(3);
 				email = result.getString(4);
@@ -174,7 +204,7 @@ public class CompanyDAO {
 				description = result.getString(8);
 				portfolio = (InputStream) result.getBlob(9);
 				displayPicture = (InputStream) result.getBlob(10);
-				Company company = new Company(companyName,industry,portfolio, password, email, phoneNumber, address, description, displayPicture);
+				Company company = new Company(id,companyName,industry,portfolio, password, email, phoneNumber, address, description, displayPicture);
 				list.add(company);
             }
             
