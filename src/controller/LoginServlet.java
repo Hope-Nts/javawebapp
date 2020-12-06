@@ -43,13 +43,13 @@ public class LoginServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		//LoginToken advisorLogin = businessAdvisor.login(email, password);
+		LoginToken advisorLogin = businessAdvisor.login(email, password);
 		LoginToken companyLogin = company.login(email, password);
-		//LoginToken investorLogin = investor.login(email, password);
-		//LoginToken professionalLogin = professional.login(email, password);
-		//LoginToken prospectLogin = prospect.login(email, password);
-		//LoginToken [] tokens = {advisorLogin,companyLogin,investorLogin,investorLogin,prospectLogin,professionalLogin};
-		LoginToken [] tokens = {companyLogin};
+		LoginToken investorLogin = investor.login(email, password);
+		LoginToken professionalLogin = professional.login(email, password);
+		LoginToken prospectLogin = prospect.login(email, password);
+		LoginToken [] tokens = {advisorLogin,companyLogin,investorLogin,investorLogin,prospectLogin,professionalLogin};
+		//LoginToken [] tokens = {companyLogin};
 		
 		for(int i = 0; i < tokens.length; i++) {
 			if(tokens[i].isLoggedIn() == true) {

@@ -128,8 +128,8 @@ public class CompanyDAO {
 				phoneNumber = result.getString(6);
 				address = result.getString(7);
 				description = result.getString(8);
-				portfolio = (InputStream) result.getBlob(9);
-				displayPicture = (InputStream) result.getBlob(10);
+				portfolio =  result.getBlob(9).getBinaryStream();
+				displayPicture = (InputStream) result.getBlob(10).getBinaryStream();
 				Company company = new Company(id,companyName,industry, portfolio, password, email, phoneNumber, address, description,displayPicture);
 				list.add(company);
 			}
@@ -202,8 +202,8 @@ public class CompanyDAO {
 				phoneNumber = result.getString(6);
 				address = result.getString(7);
 				description = result.getString(8);
-				portfolio = (InputStream) result.getBlob(9);
-				displayPicture = (InputStream) result.getBlob(10);
+				portfolio = (InputStream) result.getBlob(9).getBinaryStream();
+				displayPicture = (InputStream) result.getBlob(10).getBinaryStream();
 				Company company = new Company(id,companyName,industry,portfolio, password, email, phoneNumber, address, description, displayPicture);
 				list.add(company);
             }

@@ -143,7 +143,7 @@ public class ProspectDAO {
 	}
 	
 	// method returns advisor list to be displayed in the directory
-	public ArrayList<Prospect> getCompanies(){
+	public ArrayList<Prospect> getProspects(){
 
 		ArrayList<Prospect> list = new ArrayList<>();
 		String level, id, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,11 +60,11 @@
             <div class="type-input">
               <label >Company or Individual:</label>
               <select name="type">
-                <option value="Company">Company</option>
-                <option value="Prospect">Prospect</option>
-                <option value="Professional">Professional</option>
-                <option value="Investor">Investor</option>
-                <option value="Advisor">Business Advisor</option>
+                <option value="company">Company</option>
+                <option value="prospect">Prospect</option>
+                <option value="professional">Professional</option>
+                <option value="investor">Investor</option>
+                <option value="advisor">Business Advisor</option>
               </select>
             </div>
             <div class="industry-input">
@@ -83,15 +84,19 @@
       </section>
       <section>
         <h1 class="section-heading">Results</h1>
-        <div class="search-result">
+           <c:forEach var="list" items="${users}">
+ 			<p>Name<c:out value="${list.industry}"/> </p>
+ 			<div class="search-result">
+        
           <div class="display-picture">
             <img src="./img/heroimage.jpg" alt="" />
           </div>
           <div class="information">
             <ul>
-              <li>Name: <span>{users.get(0).getCompanyName()}</span> </li>
-              <li>Industry: <span>{users.get(0).getIndustry()</span></li>
-              <li>Contacts:<span>{users.get(0).getEmail()</span></li>
+         
+              <li>Name: <span>${users.get(0).companyName }</span></li>
+              <li>Industry: </li>
+              <li>Contacts:</li>
               <li>
                 <form action="somethingServlet" method="get">
                   <input type="hidden" value="$" />
@@ -100,69 +105,9 @@
               </li>
             </ul>
           </div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information">
-            <ul>
-              <li>Name: </li>
-              <li>Industry: </li>
-              <li>Contacts: </li>
-              <li><a>profile</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information">
-            <ul>
-              <li>Name: </li>
-              <li>Industry: </li>
-              <li>Contacts: </li>
-              <li><a>profile</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
-        <div class="search-result">
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information"></div>
-        </div>
+       	</div>
+       
+		</c:forEach>
       </section>
       <footer>
         <div class="footer">

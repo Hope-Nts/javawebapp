@@ -140,7 +140,7 @@ public class BusinessAdvisorDAO {
 	}
 	
 	// method returns advisor list to be displayed in the directory
-	public ArrayList<BusinessAdvisor> getCompanies(){
+	public ArrayList<BusinessAdvisor> getAdvisors(){
 
 		ArrayList<BusinessAdvisor> list = new ArrayList<>();
 		String advisorType, employmentStatus, fName, lName, password, email, phoneNumber, address, description, id;

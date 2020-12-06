@@ -138,7 +138,7 @@ public class InvestorDAO {
 	}
 	
 	// method returns advisor list to be displayed in the directory
-	public ArrayList<Investor> getCompanies(){
+	public ArrayList<Investor> getInvestors(){
 
 		ArrayList<Investor> list = new ArrayList<>();
 		String industry, firmName, fName, lName, password, email, phoneNumber,  address, description, id;

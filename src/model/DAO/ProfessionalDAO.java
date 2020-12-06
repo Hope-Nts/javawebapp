@@ -143,7 +143,7 @@ public class ProfessionalDAO {
 	}
 	
 	// method returns advisor list to be displayed in the directory
-	public ArrayList<Professional> getCompanies(){
+	public ArrayList<Professional> getProfessionals(){
 
 		ArrayList<Professional> list = new ArrayList<>();
 		String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description,id;
