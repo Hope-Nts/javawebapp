@@ -106,13 +106,13 @@ public class CompanyDAO {
 	}
 	
 	//searching company method
-	public Company searchCompany(String name) {
+	public Company searchCompany(String idNo) {
 	
 		ArrayList<Company> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM company WHERE name = ?");
-			pstmt.setString(1,  name);
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM company WHERE id = ?");
+			pstmt.setString(1,  idNo);
 			String username,password, email, phoneNumber, address, description, companyName, industry, id;
 			InputStream portfolio = null;
 			InputStream displayPicture = null;
@@ -129,7 +129,7 @@ public class CompanyDAO {
 				address = result.getString(7);
 				description = result.getString(8);
 				portfolio =  result.getBlob(9).getBinaryStream();
-				displayPicture = (InputStream) result.getBlob(10).getBinaryStream();
+				displayPicture = result.getBlob(10).getBinaryStream();
 				Company company = new Company(id,companyName,industry, portfolio, password, email, phoneNumber, address, description,displayPicture);
 				list.add(company);
 			}

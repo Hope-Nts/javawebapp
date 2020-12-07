@@ -101,13 +101,13 @@ public class InvestorDAO {
 	}
 	
 	//searching advisor method
-	public ArrayList<Investor>  searchAdvisor(String name) {
+	public Investor searchAdvisor(String idNo) {
 	
 		ArrayList<Investor> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Investor WHERE name = ?");
-			pstmt.setString(1,  name);
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Investor WHERE id = ?");
+			pstmt.setString(1,  idNo);
 			String industry, firmName, fName, lName, password, email, phoneNumber,  address, description,id;
 			InputStream displayPicture = null;
 			
@@ -124,14 +124,14 @@ public class InvestorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
-				displayPicture = (InputStream) result.getBlob(11);
+				displayPicture = (InputStream) result.getBlob(11).getBinaryStream();
 				Investor investor = new Investor(id, industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);
 			}
 			
 			//Company foundCompany = (Company)list.get(0);
-			return list;
+			return list.get(0);
 		}catch(Exception e) {
 			return null;
 		}
@@ -160,7 +160,7 @@ public class InvestorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
-				displayPicture = (InputStream) result.getBlob(11);
+				displayPicture = result.getBlob(11).getBinaryStream();
 				Investor investor = new Investor(id, industry, firmName,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(investor);

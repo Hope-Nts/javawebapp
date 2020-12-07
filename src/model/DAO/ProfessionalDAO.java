@@ -104,13 +104,13 @@ public class ProfessionalDAO {
 	}
 	
 	//searching advisor method
-	public ArrayList<Professional>  searchProffesional(String name) {
+	public Professional  searchProfessional(String idNo) {
 	
 		ArrayList<Professional> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE name = ?");
-			pstmt.setString(1,  name);
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE id = ?");
+			pstmt.setString(1,  idNo);
 			String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description, id;
 			InputStream displayPicture = null;
 			
@@ -129,14 +129,14 @@ public class ProfessionalDAO {
 				phoneNumber = result.getString(10);
 				address = result.getString(11);
 				description = result.getString(12);
-				displayPicture = (InputStream) result.getBlob(13);
+				displayPicture = (InputStream) result.getBlob(13).getBinaryStream();
 				Professional professional = new Professional(id, experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);
 			}
 			
 			//Company foundCompany = (Company)list.get(0);
-			return list;
+			return list.get(0);
 		}catch(Exception e) {
 			return null;
 		}
@@ -166,7 +166,7 @@ public class ProfessionalDAO {
 				phoneNumber = result.getString(10);
 				address = result.getString(11);
 				description = result.getString(12);
-				displayPicture = (InputStream) result.getBlob(13);
+				displayPicture = (InputStream) result.getBlob(13).getBinaryStream();
 				Professional professional = new Professional(id,experience, qualifications, industry, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
 				list.add(professional);

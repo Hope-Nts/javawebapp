@@ -102,13 +102,13 @@ public class BusinessAdvisorDAO {
 	}
 	
 	//searching advisor method
-	public ArrayList<BusinessAdvisor>  searchAdvisor(String name) {
+	public BusinessAdvisor searchAdvisor(String idNo) {
 	
 		ArrayList<BusinessAdvisor> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE name = ?");
-			pstmt.setString(1,  name);
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE id = ?");
+			pstmt.setString(1,  idNo);
 			String advisorType, employmentStatus, fName, lName, password, email, phoneNumber, address, description,id;
 			InputStream displayPicture ;
 			
@@ -125,7 +125,7 @@ public class BusinessAdvisorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
-				displayPicture = (InputStream) result.getBlob(11);
+				displayPicture = (InputStream) result.getBlob(11).getBinaryStream();
 				
 				BusinessAdvisor advisor = new BusinessAdvisor(id, advisorType, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description, displayPicture);
@@ -133,7 +133,7 @@ public class BusinessAdvisorDAO {
 			}
 			
 			//Company foundCompany = (Company)list.get(0);
-			return list;
+			return list.get(0);
 		}catch(Exception e) {
 			return null;
 		}
@@ -162,7 +162,7 @@ public class BusinessAdvisorDAO {
 				phoneNumber = result.getString(8);
 				address = result.getString(9);
 				description = result.getString(10);
-				displayPicture = (InputStream) result.getBlob(11);
+				displayPicture = (InputStream) result.getBlob(11).getBinaryStream();
 				BusinessAdvisor advisor = new BusinessAdvisor(id,advisorType, employmentStatus,
 						fName, lName, password, email, phoneNumber, address, description,displayPicture);
 				list.add(advisor);

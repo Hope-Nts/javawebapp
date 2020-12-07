@@ -84,29 +84,25 @@
       </section>
       <section>
         <h1 class="section-heading">Results</h1>
-           <c:forEach var="list" items="${users}">
- 			<p>Name<c:out value="${list.industry}"/> </p>
+        <c:forEach var="company" items="${companies}">
  			<div class="search-result">
-        
-          <div class="display-picture">
-            <img src="./img/heroimage.jpg" alt="" />
-          </div>
-          <div class="information">
-            <ul>
-         
-              <li>Name: <span>${users.get(0).companyName }</span></li>
-              <li>Industry: </li>
-              <li>Contacts:</li>
-              <li>
-                <form action="somethingServlet" method="get">
-                  <input type="hidden" value="$" />
-                  <input type="submit" value="profile" />
-                </form>
-              </li>
-            </ul>
-          </div>
-       	</div>
-       
+            	<div class="display-picture">
+            		<img src="./img/heroimage.jpg" alt="" />
+            	</div>
+                <div class="information">
+           	    	<ul>
+		              <li>Name: <span><c:out value="${company.companyName}"/> </span></li>
+		              <li>Industry: <span><c:out value="${company.industry}"/> </span> </li>
+		              <li>Contacts:<span><c:out value="${company.email}"/> ,<c:out value="${company.phoneNumber}"/> </span></li>
+		              <li>
+		                <form action="LoadProfileServlet" method="get">
+		                  <input type="hidden" value="${company.id}" name="id" />
+		                  <input type="submit" value="profile" />
+		                </form>
+		              </li>
+		            </ul>
+         		</div>
+       		</div>
 		</c:forEach>
       </section>
       <footer>
