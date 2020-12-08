@@ -59,7 +59,7 @@
           </div>
           <div class="profile-info">
             <div class="edit-btn">
-              <form action="editServlet">
+              <form action="editCompany.jsp">
                 <input type="hidden" name="edit" action="edit" />
                 <input type="submit" value="Edit" />
               </form>

@@ -13,7 +13,13 @@ import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
 
 import model.Beans.Company;
+import model.Beans.Investor;
+import model.Beans.Professional;
+import model.Beans.Prospect;
 import model.DAO.CompanyDAO;
+import model.DAO.InvestorDAO;
+import model.DAO.ProfessionalDAO;
+import model.DAO.ProspectDAO;
 /**
  * Servlet implementation class SignUpServlet
  */
@@ -98,7 +104,122 @@ public class SignUpServlet extends HttpServlet {
 	        }else {
 	        	url = "/index.jsp";
 	        }
+		}else if(action.equals("professionalSignUp")) {
+			//getting the parameters from the request
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");	
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String phoneNumber = request.getParameter("phoneNumber");
+			String address = request.getParameter("address");
+			String industry = request.getParameter("industry");
+			String experience = request.getParameter("experience");
+			String qualifications = request.getParameter("qualification");
+			String employmentStatus = request.getParameter("employmentStatus");
+			String description = request.getParameter("description");
+				        
+	       //getting the displayPicure file from the request
+			InputStream displayPicture = null; // input stream of the upload file
+	        // obtains the upload file part in this multipart request
+	        Part displayPictureFilePart = request.getPart("displayPicture");
+	        if (displayPictureFilePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(displayPictureFilePart.getName());
+	            System.out.println(displayPictureFilePart.getSize());
+	            System.out.println(displayPictureFilePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            displayPicture = displayPictureFilePart.getInputStream();
+	        }
+	        
+	        ProfessionalDAO professionalDAO = new ProfessionalDAO();
+	        String id = professionalDAO.createId();
+	        Professional newProfessional = new Professional(id, experience, qualifications, industry, employmentStatus, firstName, lastName, password, email, phoneNumber, address, description, displayPicture);
+	        
+	        confirmation = professionalDAO.insertProfessional(newProfessional);
+	        if(confirmation = true) {
+	        	url = "/index.jsp";
+	        }else {
+	        	url = "/index.jsp";
+	        }
+		}else if(action.equals("prospectSignUp")) {
+			//getting the parameters from the request
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");	
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String phoneNumber = request.getParameter("phoneNumber");
+			String address = request.getParameter("address");
+			String level = request.getParameter("level");
+			String currentQualification = request.getParameter("currentQualification");
+			String obtainedQualification = request.getParameter("obtainedQualification");
+			String expectedDateOfCompletion = request.getParameter("dateOfCompletion");
+			String description = request.getParameter("description");
+				        
+	       //getting the displayPicure file from the request
+			InputStream displayPicture = null; // input stream of the upload file
+	        // obtains the upload file part in this multipart request
+	        Part displayPictureFilePart = request.getPart("displayPicture");
+	        if (displayPictureFilePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(displayPictureFilePart.getName());
+	            System.out.println(displayPictureFilePart.getSize());
+	            System.out.println(displayPictureFilePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            displayPicture = displayPictureFilePart.getInputStream();
+	        }
+	        
+	        ProspectDAO prospectDAO = new ProspectDAO();
+	        String id = prospectDAO.createId();
+	        Prospect newProspect = new Prospect( id, level, currentQualification, obtainedQualification, expectedDateOfCompletion, firstName, lastName, password, email, phoneNumber, address, description, displayPicture);
+	        
+	        confirmation = prospectDAO.insertProspect(newProspect);
+	        if(confirmation = true) {
+	        	url = "/index.jsp";
+	        }else {
+	        	url = "/index.jsp";
+	        }
+		}else if(action.equals("investorSignUp")) {
+			//getting the parameters from the request
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");	
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String phoneNumber = request.getParameter("phoneNumber");
+			String address = request.getParameter("address");
+			String industry = request.getParameter("industry");
+			String experience = request.getParameter("experience");
+			String description = request.getParameter("description");
+			String firmName = request.getParameter("firmName");	        
+	       //getting the displayPicure file from the request
+			InputStream displayPicture = null; // input stream of the upload file
+	        // obtains the upload file part in this multipart request
+	        Part displayPictureFilePart = request.getPart("displayPicture");
+	        if (displayPictureFilePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(displayPictureFilePart.getName());
+	            System.out.println(displayPictureFilePart.getSize());
+	            System.out.println(displayPictureFilePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            displayPicture = displayPictureFilePart.getInputStream();
+	        }
+	        
+	        InvestorDAO investorDAO = new InvestorDAO();
+	        String id = investorDAO.createId();
+	        Investor newInvestor = new Investor( id, industry, firmName, firstName, lastName, password, email, phoneNumber, address, description, displayPicture);
+	        
+	        confirmation = investorDAO.insertInvestor(newInvestor);
+	        if(confirmation = true) {
+	        	url = "/index.jsp";
+	        }else {
+	        	url = "/index.jsp";
+	        }
 		}
+
+
+
 
 		getServletContext()
 		.getRequestDispatcher(url)

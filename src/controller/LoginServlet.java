@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 		LoginToken professionalLogin = professional.login(email, password);
 		LoginToken prospectLogin = prospect.login(email, password);
 		LoginToken [] tokens = {advisorLogin,companyLogin,investorLogin,investorLogin,prospectLogin,professionalLogin};
-		//LoginToken [] tokens = {companyLogin};
+		//LoginToken [] tokens = {comp-anyLogin};
 		
 		for(int i = 0; i < tokens.length; i++) {
 			if(tokens[i].isLoggedIn() == true) {

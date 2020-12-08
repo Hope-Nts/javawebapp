@@ -64,26 +64,20 @@
                 <input type="submit" value="Edit" />
               </form>
             </div>
-            <h2>Investore</h2>
-            <p><span>Name:</span></p>
-            <p><span>Email:</span>Email:</p>
-            <p><span>Industry:</span>Email:</p>
-            <p><span>Firm Name:</span>Email:</p>
-            <p><span>Phone:</span>Phone:</p>
-            <p><span>Address:</span>Address:</p>
+            <h2>Investor</h2>
+            <p><span>Name: ${profile.firstName} ${profile.lasttName}</span></p>
+            <p><span>Email: ${profile.email}</span></p>
+            <p><span>Industry: ${profile.industry}</span></p>
+            <p><span>Firm Name: ${profile.firmName}</span></p>
+            <p><span>Phone: ${profile.phoneNumber}</span></p>
+            <p><span>Address: ${profile.address}</span></p>
           </div>
         </div>
         <br />
         <div class="profile-description">
           <h2>Description</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            ${profile.description}
           </p>
         </div>
       </section>

@@ -23,7 +23,7 @@ public class ProspectDAO {
 		String dbId = "";
 		LoginToken token =  new LoginToken(dbId, false);
 		try {
-			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Professional");
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from prospect");
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
@@ -74,11 +74,11 @@ public class ProspectDAO {
 	
 	
 	//insert Company DB method
-	public Boolean insertProfessional(Prospect prospect){
+	public Boolean insertProspect(Prospect prospect){
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into Professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
+			PreparedStatement pstmt = con.prepareStatement("insert into prospect(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, "");//TO-DO create an id generator
 			pstmt.setString(2, prospect.getFirstName());
@@ -109,7 +109,7 @@ public class ProspectDAO {
 		ArrayList<Prospect> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE id = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM prospect WHERE id = ?");
 			pstmt.setString(1,  idNo);
 			String level, id, currentQualification, obtainedQualification, expectedDateOfCompletion, fName, lName, password, email, phoneNumber, address, description;
 			InputStream displayPicture = null;
@@ -151,7 +151,7 @@ public class ProspectDAO {
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from Professional");
+            ResultSet result = statement.executeQuery("select * from prospect");
 
             while(result.next()){
             	id = result.getString(1);

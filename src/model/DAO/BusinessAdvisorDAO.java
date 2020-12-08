@@ -25,7 +25,7 @@ public class BusinessAdvisorDAO {
 		String dbId = "";
 		LoginToken token =  new LoginToken(dbId, false);
 		try {
-			PreparedStatement pstmt = con.prepareStatement("select id,email,password from BusinessAdvisor");
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from advisor");
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
@@ -79,7 +79,7 @@ public class BusinessAdvisorDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into BusinessAdvisor(id,fName, lName, advisorType, status, email, password, phoneNumber, address, description, displayPicture) "
+			PreparedStatement pstmt = con.prepareStatement("insert into advisor(id,fName, lName, advisorType, status, email, password, phoneNumber, address, description, displayPicture) "
 					+ "VALUES(?,?, ?, ?, ?, ?, ?, ?, ?,?, ?)");
 			pstmt.setString(1, "");//TO-DO id generator
 			pstmt.setString(2, businessAdvisor.getFirstName());
@@ -107,7 +107,7 @@ public class BusinessAdvisorDAO {
 		ArrayList<BusinessAdvisor> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM BusinessAdvisor WHERE id = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM advisor WHERE id = ?");
 			pstmt.setString(1,  idNo);
 			String advisorType, employmentStatus, fName, lName, password, email, phoneNumber, address, description,id;
 			InputStream displayPicture ;
@@ -149,7 +149,7 @@ public class BusinessAdvisorDAO {
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from company");
+            ResultSet result = statement.executeQuery("select * from advisor");
 
             while(result.next()){
             	id = result.getString(1);

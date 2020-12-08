@@ -39,8 +39,8 @@
             <ul>
               <li><a class="nav-link" href="signIn.jsp">Sign out</a></li>
               <li>
-                <form action="advisorProfile.jsp">
-                  <input type="hidden" value="${loginToken.id }" />
+                <form action="LoadUserProfile" method="GET" >
+                  <input type="hidden" value="${loginToken.id }" name ="loginId" />
                   <input type="submit" value="Profile" />
                 </form>
               </li>

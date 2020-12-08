@@ -6,10 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Beans.BusinessAdvisor;
 import model.Beans.Company;
 import model.Beans.Investor;
+import model.Beans.LoginToken;
 import model.Beans.Professional;
 import model.Beans.Prospect;
 import model.DAO.BusinessAdvisorDAO;
@@ -19,22 +21,23 @@ import model.DAO.ProfessionalDAO;
 import model.DAO.ProspectDAO;
 
 /**
- * Servlet implementation class LoadProfileServlet
+ * Servlet implementation class LoadEditProfileServlet
  */
-@WebServlet("/LoadProfileServlet")
-public class LoadProfileServlet extends HttpServlet {
+@WebServlet("/LoadEditProfileServlet")
+public class LoadEditProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadProfileServlet() {
+    public LoadEditProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
     BusinessAdvisorDAO businessAdvisor = new BusinessAdvisorDAO();
 	CompanyDAO company = new CompanyDAO();
@@ -42,39 +45,41 @@ public class LoadProfileServlet extends HttpServlet {
 	ProfessionalDAO professional = new ProfessionalDAO();
 	ProspectDAO prospect = new ProspectDAO();
 	String url = "/resultsDirectory.jsp";
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String url = request.getHeader("referer");
+		HttpSession session = request.getSession();
+		LoginToken token = (LoginToken)request.getAttribute("loginToken");
 		
-		String id = request.getParameter("id");
-		String tokenId = request.getParameter("loginId");
+		if(token.isLoggedIn() == true) {
+			String id = token.getId();
+			if(id.contains("CO")) {
+				Company profile = company.searchCompany(id);
+				url = "/editCompany.jsp";
+				request.setAttribute("profile", profile);
+			}else if(id.contains("PF")) {
+				Professional profile = professional.searchProfessional(id);
+				url = "/editProfessional.jsp";
+				request.setAttribute("profile", profile);
+			}else if(id.contains("BI")) {
+				//businessAdvisor
+				BusinessAdvisor profile = businessAdvisor.searchAdvisor(id);
+				url = "/editAdvisor.jsp";
+				request.setAttribute("profile", profile);
+			}else if(id.contains("IN")) {
+				//investor
+				Investor profile = investor.searchAdvisor(id);
+				url = "/editInvestor.jsp";
+				request.setAttribute("profile", profile);
+			}else if(id.contains("PR")) {
+				//prospect
+				Prospect profile = prospect.searchProspect(id);
+				url = "/prospectProfile.jsp";
+				request.setAttribute("profile", profile);
+			}
 		
-		if(id.contains("CO")) {
-			Company profile = company.searchCompany(id);
-			url = "/companyProfile.jsp";
-			request.setAttribute("profile", profile);
-		}else if(id.contains("PF")) {
-			Professional profile = professional.searchProfessional(id);
-			url = "/professionalProfile.jsp";
-			request.setAttribute("profile", profile);
-		}else if(id.contains("BI")) {
-			//businessAdvisor
-			BusinessAdvisor profile = businessAdvisor.searchAdvisor(id);
-			url = "/advisorProfile.jsp";
-			request.setAttribute("profile", profile);
-		}else if(id.contains("IN")) {
-			//investor
-			Investor profile = investor.searchAdvisor(id);
-			url = "/investorProfile.jsp";
-			request.setAttribute("profile", profile);
-		}else if(id.contains("PR")) {
-			//prospect
-			Prospect profile = prospect.searchProspect(id);
-			url = "/prospectProfile.jsp";
-			request.setAttribute("profile", profile);
 		}
-		
 		
 		getServletContext()
 		.getRequestDispatcher(url)

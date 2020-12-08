@@ -19,16 +19,16 @@ import model.DAO.ProfessionalDAO;
 import model.DAO.ProspectDAO;
 
 /**
- * Servlet implementation class LoadProfileServlet
+ * Servlet implementation class LoadUserProfile
  */
-@WebServlet("/LoadProfileServlet")
-public class LoadProfileServlet extends HttpServlet {
+@WebServlet("/LoadUserProfile")
+public class LoadUserProfile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadProfileServlet() {
+    public LoadUserProfile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,14 +41,11 @@ public class LoadProfileServlet extends HttpServlet {
 	InvestorDAO investor = new InvestorDAO();
 	ProfessionalDAO professional = new ProfessionalDAO();
 	ProspectDAO prospect = new ProspectDAO();
-	String url = "/resultsDirectory.jsp";
-	
+	String url = "/index.jsp";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		String id = request.getParameter("id");
-		String tokenId = request.getParameter("loginId");
+		String id = request.getParameter("loginId");
 		
 		if(id.contains("CO")) {
 			Company profile = company.searchCompany(id);
@@ -80,6 +77,7 @@ public class LoadProfileServlet extends HttpServlet {
 		.getRequestDispatcher(url)
 		.forward(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

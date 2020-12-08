@@ -74,6 +74,7 @@
         </div>
         <div id="Prospect" class="signUpForm">
           <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
+          	<input type="hidden" name="action" value="prospectSignUp" >
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -108,6 +109,7 @@
         </div>
         <div id="Professional" class="signUpForm">
           <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
+          	<input type="hidden" name="action" value="professionalSignUp" >
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -123,7 +125,8 @@
             </select>
             <label>Phone</label>
             <input type="phone" name="phoneNumber" placeholder="+267" />
-            <label>Addres</label>
+            <label>Address
+            </label>
             <input type="text" name="address" />
             <label>Experience *Years</label>
             <input type="text" name="Experience" />
@@ -146,6 +149,7 @@
         <div id="Advisor" class="signUpForm">
           <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
             <label>First Name</label>
+            <input type="hidden" name="action" value="advisorSignUp" >
             <input type="text" name="firstName" />
             <label>Last Name</label>
             <input type="text" name="lastName" />
@@ -180,6 +184,7 @@
         </div>
         <div id="Investor" class="signUpForm">
           <form action="SignUpServlet" method="POST" enctype="multipart/form-data">
+          	<input type="hidden" name="action" value="investorSignUp" >
             <label>First Name</label>
             <input type="text" name="firstName" />
             <label>Last Name</label>
@@ -195,8 +200,10 @@
             </select>
             <label>Phone</label>
             <input type="phone" name="phoneNumber" placeholder="+267" />
-            <label>Addres</label>
+            <label>Address</label>
             <input type="text" name="address" />
+            <label>FirmName</label>
+            <input type="text" name="firmName" />
             <label>Experience *Years</label>
             <input type="text" name="Experience" />
             <label>Display Picture</label>

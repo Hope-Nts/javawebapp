@@ -23,7 +23,7 @@ public class ProfessionalDAO {
 		String dbId = "";
 		LoginToken token =  new LoginToken(dbId, false);
 		try {
-			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Professional");
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from professional");
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
@@ -78,7 +78,7 @@ public class ProfessionalDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into Professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
+			PreparedStatement pstmt = con.prepareStatement("insert into professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, "");//TO-DO create an id generator
 			pstmt.setString(2, professional.getFirstName());
@@ -109,7 +109,7 @@ public class ProfessionalDAO {
 		ArrayList<Professional> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Professional WHERE id = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM professional WHERE id = ?");
 			pstmt.setString(1,  idNo);
 			String experience, qualifications, industry, employmentStatus, fName, lName, password, email, phoneNumber, address, description, id;
 			InputStream displayPicture = null;
@@ -151,7 +151,7 @@ public class ProfessionalDAO {
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from Professional");
+            ResultSet result = statement.executeQuery("select * from professional");
 
             while(result.next()){
             	id = result.getString(1);

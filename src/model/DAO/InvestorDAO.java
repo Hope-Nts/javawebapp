@@ -23,7 +23,7 @@ public class InvestorDAO {
 		String dbId = "";
 		LoginToken token =  new LoginToken(dbId, false);
 		try {
-			PreparedStatement pstmt = con.prepareStatement("select id,email,password from Investor");
+			PreparedStatement pstmt = con.prepareStatement("select id,email,password from investor");
 			ResultSet result = pstmt.executeQuery();
 			
 			while(result.next()) {
@@ -77,7 +77,7 @@ public class InvestorDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into Investor(id, fName, lName, industry, firmName, email, password, phoneNumber, address, description, displayPicture ) "
+			PreparedStatement pstmt = con.prepareStatement("insert into investor(id, fName, lName, industry, firmName, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)");
 			pstmt.setString(1, "");//TO-DO create an id generator
 			pstmt.setString(2, investor.getFirstName());
@@ -106,7 +106,7 @@ public class InvestorDAO {
 		ArrayList<Investor> list = new ArrayList<>();
 		
 		try {
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM Investor WHERE id = ?");
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM investor WHERE id = ?");
 			pstmt.setString(1,  idNo);
 			String industry, firmName, fName, lName, password, email, phoneNumber,  address, description,id;
 			InputStream displayPicture = null;
@@ -147,7 +147,7 @@ public class InvestorDAO {
 
         try{
             Statement statement = con.createStatement();
-            ResultSet result = statement.executeQuery("select * from Investor");
+            ResultSet result = statement.executeQuery("select * from investor");
 
             while(result.next()){
             	id = result.getString(1);
