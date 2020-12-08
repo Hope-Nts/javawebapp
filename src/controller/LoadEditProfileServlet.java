@@ -44,46 +44,63 @@ public class LoadEditProfileServlet extends HttpServlet {
 	InvestorDAO investor = new InvestorDAO();
 	ProfessionalDAO professional = new ProfessionalDAO();
 	ProspectDAO prospect = new ProspectDAO();
-	String url = "/resultsDirectory.jsp";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String url = request.getHeader("referer");
+		System.out.print(url);
 		HttpSession session = request.getSession();
 		LoginToken token = (LoginToken)request.getAttribute("loginToken");
 		
-		if(token.isLoggedIn() == true) {
-			String id = token.getId();
-			if(id.contains("CO")) {
-				Company profile = company.searchCompany(id);
-				url = "/editCompany.jsp";
-				request.setAttribute("profile", profile);
-			}else if(id.contains("PF")) {
-				Professional profile = professional.searchProfessional(id);
-				url = "/editProfessional.jsp";
-				request.setAttribute("profile", profile);
-			}else if(id.contains("BI")) {
-				//businessAdvisor
-				BusinessAdvisor profile = businessAdvisor.searchAdvisor(id);
-				url = "/editAdvisor.jsp";
-				request.setAttribute("profile", profile);
-			}else if(id.contains("IN")) {
-				//investor
-				Investor profile = investor.searchAdvisor(id);
-				url = "/editInvestor.jsp";
-				request.setAttribute("profile", profile);
-			}else if(id.contains("PR")) {
-				//prospect
-				Prospect profile = prospect.searchProspect(id);
-				url = "/prospectProfile.jsp";
-				request.setAttribute("profile", profile);
+		if(token != null) {
+			if(token.isLoggedIn() == true) {
+				String id = token.getId();
+				if(id.contains("CO")) {
+					Company profile = company.searchCompany(id);
+					url = "/editCompany.jsp";
+					request.setAttribute("profile", profile);
+					getServletContext()
+					.getRequestDispatcher(url)
+					.forward(request, response);
+				}else if(id.contains("PF")) {
+					Professional profile = professional.searchProfessional(id);
+					url = "/editProfessional.jsp";
+					request.setAttribute("profile", profile);
+					getServletContext()
+					.getRequestDispatcher(url)
+					.forward(request, response);
+				}else if(id.contains("BI")) {
+					//businessAdvisor
+					BusinessAdvisor profile = businessAdvisor.searchAdvisor(id);
+					url = "/editAdvisor.jsp";
+					request.setAttribute("profile", profile);
+					getServletContext()
+					.getRequestDispatcher(url)
+					.forward(request, response);
+				}else if(id.contains("IN")) {
+					//investor
+					Investor profile = investor.searchAdvisor(id);
+					url = "/editInvestor.jsp";
+					request.setAttribute("profile", profile);
+					getServletContext()
+					.getRequestDispatcher(url)
+					.forward(request, response);
+				}else if(id.contains("PR")) {
+					//prospect
+					Prospect profile = prospect.searchProspect(id);
+					url = "/editProspect.jsp";
+					request.setAttribute("profile", profile);
+					getServletContext()
+					.getRequestDispatcher(url)
+					.forward(request, response);
+				}
+			
 			}
-		
 		}
 		
-		getServletContext()
-		.getRequestDispatcher(url)
-		.forward(request, response);
+		response.sendRedirect(url);
+		
+		
 	}
 
 	/**
