@@ -12,7 +12,8 @@
             <label>Name</label>
             <input type="text" name="name" value="${profile.companyName }"/>
             <label>Industry</label>
-            <select name="industry" name="industry" value="${profile.industry }">
+            <select name="industry" >
+              <option value="${profile.industry }">${profile.industry }</option>
               <option value="IT Infrastructure">IT Infrastructure</option>
               <option value="Software Development">Software Development</option>
             </select>

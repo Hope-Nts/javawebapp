@@ -107,7 +107,7 @@ public class ProspectDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("update professional set fName= ?, lName= ?, level= ?, currentQualification= ?, obtainedQualification= ?, expectedDate= ?, email= ?, password= ?, phoneNumber= ?, address= ?, description= ? where id= ? ");
+			PreparedStatement pstmt = con.prepareStatement("update prospect set fName= ?, lName= ?, level= ?, currentQualification= ?, obtainedQualification= ?, expectedDate= ?, email= ?, password= ?, phoneNumber= ?, address= ?, description= ? where id= ? ");
 
 			pstmt.setString(1, prospect.getFirstName());
 			pstmt.setString(2, prospect.getLastName());

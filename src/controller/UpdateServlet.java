@@ -130,14 +130,13 @@ public class UpdateServlet extends HttpServlet {
 			String phoneNumber = request.getParameter("phoneNumber");
 			String address = request.getParameter("address");
 			String industry = request.getParameter("industry");
-			String experience = request.getParameter("experience");
 			String description = request.getParameter("description");
 			String firmName = request.getParameter("firmName");	        
 	        
 	        InvestorDAO investorDAO = new InvestorDAO();
 	        Investor newInvestor = new Investor( id, industry, firmName, firstName, lastName, password, email, phoneNumber, address, description);
 	        
-	        confirmation = investorDAO.insertInvestor(newInvestor);
+	        confirmation = investorDAO.updateInvestor(newInvestor);
 	        if(confirmation = true) {
 	        	url = "/index.jsp";
 	        }else {
@@ -161,7 +160,7 @@ public class UpdateServlet extends HttpServlet {
 
 	        BusinessAdvisor newAdvisor = new BusinessAdvisor( id, advisorType, employmentStatus, firstName, lastName, password, email, phoneNumber, address, description);
 	        
-	        confirmation = advisorDAO.insertAdvisor(newAdvisor);
+	        confirmation = advisorDAO.updateAdvisor(newAdvisor);
 	        if(confirmation = true) {
 	        	url = "/index.jsp";
 	        }else {

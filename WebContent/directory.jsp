@@ -34,4 +34,5 @@
         <h1 class="section-heading">Results</h1>
         
       </section>
+      </main>
 <jsp:include page="footer.jsp"></jsp:include>

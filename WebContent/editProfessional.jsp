@@ -18,7 +18,8 @@
             <label>Password</label>
             <input type="password" name="password" value="${profile.password }"/>
             <label>Industry</label>
-            <select name="industry" name="industry" value="${profile.industry }">
+            <select name="industry" name="industry">
+              <option  value="${profile.industry }">${profile.industry }</option>
               <option value="IT Infrastructure">IT Infrastructure</option>
               <option value="Software Development">Software Development</option>
             </select>
@@ -31,7 +32,8 @@
             <label>Qualification</label>
             <input type="text" name="qualification" value="${profile.qualifications }"/>
             <label>Employment Status</label>
-            <select name="employmentStatus" value="${profile.employmentStatus }">
+            <select name="employmentStatus" >
+             <option value="${profile.employmentStatus }">${profile.employmentStatus }</option>
               <option value="Employed">Employed</option>
               <option value="Free-agent">Free-agent</option>
             </select>

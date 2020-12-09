@@ -18,7 +18,8 @@
             <label>Password</label>
             <input type="password" name="password" value="${profile.password }"/>
             <label>Advisor Type</label>
-            <select name="advisorType" value="${profile.advisorType }">
+            <select name="advisorType" >
+              <option value="${profile.advisorType }">${profile.advisorType }</option>
               <option value="Generic Business">Generic Business</option>
               <option value="Tech Business">Tech Business</option>
             </select>

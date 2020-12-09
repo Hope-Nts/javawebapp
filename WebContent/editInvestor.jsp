@@ -7,7 +7,7 @@
         <div class="editProfileForm">
           <form action="UpdateServlet" method="POST">
             <input type="submit" value="Update" />
-            <input type="hidden" name="action" value="editInvestor" />
+            <input type="hidden" name="action" value="updateInvestor" />
             <input type="hidden" name="id" value="${profile.id }"/>
             <label>First Name</label>
             <input type="text" name="firstName" value="${profile.firstName }"/>
@@ -18,16 +18,17 @@
             <label>Password</label>
             <input type="password" name="password" value="${profile.password }" />
             <label>Industry</label>
-            <select name="industry" name="industry" value="${profile.industry }">
+            <select name="industry" name="industry" >
+              <option value="${profile.industry }">${profile.industry }</option>
               <option value="IT Infrastructure">IT Infrastructure</option>
               <option value="Software Development">Software Development</option>
             </select>
+            <label>FirmName</label>
+            <input type="text" name="firmName" value="${profile.firmName }" />
             <label>Phone</label>
             <input type="phone" name="phoneNumber" value="${profile.phoneNumber }" />
             <label>Address</label>
             <input type="text" name="address"  value="${profile.address }"/>
-            <label>Experience *Years</label>
-            <input type="text" name="Experience" value="${profile.experience }"/>
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>

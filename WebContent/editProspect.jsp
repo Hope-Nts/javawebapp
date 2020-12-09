@@ -22,7 +22,8 @@
             <label>Address</label>
             <input type="text" name="address" value="${profile.address }"/>
             <label>Level</label>
-            <select name="level" value="${profile.level }">
+            <select name="level" >
+              <option value="">${profile.level }</option>
               <option value="Undergraduate">Undergraduate</option>
               <option value="Post-graduate">Post-graduate</option>
             </select>

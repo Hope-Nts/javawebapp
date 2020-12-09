@@ -106,7 +106,7 @@ public class BusinessAdvisorDAO {
 			
 			try {
 				
-				PreparedStatement pstmt = con.prepareStatement(" update advisor set fName =?, lName?, advisorType=?, status=?, email=?, password=?, phoneNumber=?, address=?, description=? where id=?");
+				PreparedStatement pstmt = con.prepareStatement(" update advisor set fName =?, lName=?, advisorType=?, status=?, email=?, password=?, phoneNumber=?, address=?, description=? where id=?");
 				
 				pstmt.setString(1, businessAdvisor.getFirstName());
 				pstmt.setString(2, businessAdvisor.getLastName());
