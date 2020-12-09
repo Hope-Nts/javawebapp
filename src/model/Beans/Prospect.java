@@ -23,6 +23,16 @@ public class Prospect extends Individual implements Serializable {
 		this.expectedDateOfCompletion = expectedDateOfCompletion;
 	}
 	
+	public Prospect(String id, String level, String currentQualification, String obtainedQualification, String expectedDateOfCompletion,
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(id, fName, lName, password, email, phoneNumber, address, description);		
+		
+		this.level = level;
+		this.currentQualification = currentQualification;
+		this.obtainedQualification = obtainedQualification;
+		this.expectedDateOfCompletion = expectedDateOfCompletion;
+	}
+	
 	//getters and setters
 	/////////////////////////////////////
 	public void setLevel(String level) {

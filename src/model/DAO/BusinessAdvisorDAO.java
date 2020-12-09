@@ -101,6 +101,33 @@ public class BusinessAdvisorDAO {
 		return false;
 	}
 	
+	//insert Company DB method
+		public Boolean updateAdvisor(BusinessAdvisor businessAdvisor){
+			
+			try {
+				
+				PreparedStatement pstmt = con.prepareStatement(" update advisor set fName =?, lName?, advisorType=?, status=?, email=?, password=?, phoneNumber=?, address=?, description=? where id=?");
+				
+				pstmt.setString(1, businessAdvisor.getFirstName());
+				pstmt.setString(2, businessAdvisor.getLastName());
+				pstmt.setString(3, businessAdvisor.getAdvisorType());
+				pstmt.setString(4, businessAdvisor.getEmploymentStatus());
+				pstmt.setString(5, businessAdvisor.getEmail());
+				pstmt.setString(6, businessAdvisor.getPassword());
+				pstmt.setString(7, businessAdvisor.getPhoneNumber());
+				pstmt.setString(8, businessAdvisor.getAddress()); 
+				pstmt.setString(9,businessAdvisor.getDescription());
+				pstmt.setString(10, businessAdvisor.getId());//TO-DO id generator
+				//execute the preparedStatement
+				return pstmt.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return false;
+		}
+		
+	
 	//searching advisor method
 	public BusinessAdvisor searchAdvisor(String idNo) {
 	

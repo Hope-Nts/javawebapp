@@ -5,9 +5,10 @@
       <h1 class="section-heading">Profile</h1>
       <section>
         <div class="editProfileForm">
-          <form action="updateServlet" method="POST">
+          <form action="UpdateServlet" method="POST">
             <input type="submit" value="Update" />
-            <input type="hidden" value="${profile.id }" />
+            <input type="hidden" name="action" value="updateAdvisor" />
+            <input type="hidden" name="id" value="${profile.id }"/>
             <label>First Name</label>
             <input type="text" name="firstName" value="${profile.firstName }"/>
             <label>Last Name</label>
@@ -33,7 +34,7 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               ${profile.description }
             </textarea>
           </form>

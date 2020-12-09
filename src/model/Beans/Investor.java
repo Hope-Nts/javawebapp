@@ -21,6 +21,13 @@ public class Investor extends Individual implements Serializable{
 		this.firmName = firmName;
 	} 
 	
+	public Investor(String id, String industry, String firmName,
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(id,fName, lName, password, email, phoneNumber, address, description);		
+		this.industry = industry;
+		this.firmName = firmName;
+	} 
+	
 	public void setIndustry(String industry) {
 		this.industry = industry;
 	}

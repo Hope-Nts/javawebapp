@@ -103,6 +103,34 @@ public class ProspectDAO {
 		return false;
 	}
 	
+	public Boolean updateProspect(Prospect prospect){
+		
+		try {
+			
+			PreparedStatement pstmt = con.prepareStatement("update professional set fName= ?, lName= ?, level= ?, currentQualification= ?, obtainedQualification= ?, expectedDate= ?, email= ?, password= ?, phoneNumber= ?, address= ?, description= ? where id= ? ");
+
+			pstmt.setString(1, prospect.getFirstName());
+			pstmt.setString(2, prospect.getLastName());
+			pstmt.setString(3, prospect.getLevel());
+			pstmt.setString(4, prospect.getCurrentQualification());
+			pstmt.setString(5, prospect.getObtainedQualification());
+			pstmt.setString(6, prospect.getExpectedDateOfCompletion());
+			pstmt.setString(7, prospect.getEmail());
+			pstmt.setString(8, prospect.getPassword());
+			pstmt.setString(9, prospect.getPhoneNumber());
+			pstmt.setString(10, prospect.getAddress()); 
+			pstmt.setString(11,prospect.getDescription());
+			pstmt.setString(12, prospect.getId());//TO-DO create an id generator
+
+			//execute the preparedStatement
+			return pstmt.execute();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	//searching advisor method
 	public Prospect  searchProspect(String idNo) {
 	

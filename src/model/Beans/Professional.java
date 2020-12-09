@@ -22,6 +22,16 @@ public class Professional extends Individual implements Serializable{
 		this.employmentStatus = employmentStatus;
 	}
 	
+	public Professional(String id,String experience, String qualifications, String industry, String employmentStatus,
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(id,fName, lName, password, email, phoneNumber, address, description);		
+		
+		this.experience = experience;
+		this.qualifications = qualifications;
+		this.industry = industry;
+		this.employmentStatus = employmentStatus;
+	}
+	
 	//////////////////////////////////////
 	public void setExperience(String experience) {
 		this.experience = experience;

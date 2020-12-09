@@ -5,10 +5,12 @@
       <h1 class="section-heading">Profile</h1>
       <section>
         <div class="editProfileForm">
-          <form action="updateServlet" method="POST">
+          <form action="UpdateServlet" method="POST">
             <input type="submit" value="Update" />
+            <input type="hidden" name="action" value="updateCompany" />
+            <input type="hidden" name="id" value="${profile.id }"/>
             <label>Name</label>
-            <input type="text" name="companyName" value="${profile.companyName }"/>
+            <input type="text" name="name" value="${profile.companyName }"/>
             <label>Industry</label>
             <select name="industry" name="industry" value="${profile.industry }">
               <option value="IT Infrastructure">IT Infrastructure</option>
@@ -27,7 +29,7 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
             	${profile.description}
           </textarea
             >

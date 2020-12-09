@@ -23,6 +23,15 @@ public class BusinessAdvisor extends Individual implements Serializable{
 		
 	} 
 	
+	public BusinessAdvisor(String id,String advisorType, String employmentStatus,
+			String fName, String lName, String password, String email, String phoneNumber, String address, String description) {
+		super(id,fName, lName, password, email, phoneNumber, address, description);
+		
+		this.advisorType = advisorType;
+		this.employmentStatus = employmentStatus;
+		
+	} 
+	
 	public void setAdvisorType(String advisorType) {
 		this.advisorType = advisorType;
 	}

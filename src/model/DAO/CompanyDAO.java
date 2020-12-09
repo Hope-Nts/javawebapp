@@ -105,6 +105,32 @@ public class CompanyDAO {
 		return false;
 	}
 	
+	
+	//insert Company DB method
+		public Boolean updateCompany(Company company) throws FileNotFoundException {
+			
+			try {
+				
+				PreparedStatement pstmt = con.prepareStatement(" update company set name= ?, industry= ?, email= ?, password = ?, phoneNumber = ?, address = ?, description = ? where id = ?");
+				
+				pstmt.setString(1, company.getCompanyName());
+				pstmt.setString(2, company.getIndustry());
+				pstmt.setString(3, company.getEmail());
+				pstmt.setString(4, company.getPassword());
+				pstmt.setString(5, company.getPhoneNumber());
+				pstmt.setString(6, company.getAddress());
+				pstmt.setString(7, company.getDescription());
+				pstmt.setString(8, company.getId()); // TO-DO id generator
+				
+				//execute the preparedStatement
+				return pstmt.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return false;
+		}
+	
 	//searching company method
 	public Company searchCompany(String idNo) {
 	

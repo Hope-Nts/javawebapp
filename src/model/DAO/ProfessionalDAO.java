@@ -103,6 +103,34 @@ public class ProfessionalDAO {
 		return false;
 	}
 	
+	//insert Company DB method
+		public Boolean updateProfessional(Professional professional){
+			
+			try {
+				
+				PreparedStatement pstmt = con.prepareStatement("update professional set fName= ?, lName= ?, industry= ?, qualification= ?, experience= ?, status= ?, email= ?, password= ?, phoneNumber= ?, address= ?, description= ? where id= ? ");
+
+				pstmt.setString(1, professional.getFirstName());
+				pstmt.setString(2, professional.getLastName());
+				pstmt.setString(3, professional.getIndustry());
+				pstmt.setString(4, professional.getQualifications());
+				pstmt.setString(5, professional.getExperience());
+				pstmt.setString(6, professional.getEmploymentStatus());
+				pstmt.setString(7, professional.getEmail());
+				pstmt.setString(8, professional.getPassword());
+				pstmt.setString(9, professional.getPhoneNumber());
+				pstmt.setString(10, professional.getAddress()); 
+				pstmt.setString(11,professional.getDescription());
+				pstmt.setString(12, professional.getId());//TO-DO create an id generator
+				//execute the preparedStatement
+				return pstmt.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return false;
+		}
+	
 	//searching advisor method
 	public Professional  searchProfessional(String idNo) {
 	

@@ -100,6 +100,32 @@ public class InvestorDAO {
 		return false;
 	}
 	
+	//insert Company DB method
+		public Boolean updateInvestor(Investor investor){
+			
+			try {
+				
+				PreparedStatement pstmt = con.prepareStatement("update investor set fName= ?, lName= ?, industry= ?, firmName= ?, email= ?, password= ?, phoneNumber= ?, address= ?, description= ? where id= ? ");
+				pstmt.setString(1, investor.getId());//TO-DO create an id generator
+				pstmt.setString(2, investor.getFirstName());
+				pstmt.setString(3, investor.getLastName());
+				pstmt.setString(4, investor.getIndustry());
+				pstmt.setString(5, investor.getFirmName());
+				pstmt.setString(6, investor.getEmail());
+				pstmt.setString(7, investor.getPassword());
+				pstmt.setString(8, investor.getPhoneNumber());
+				pstmt.setString(9, investor.getAddress()); 
+				pstmt.setString(10,investor.getDescription());
+				pstmt.setBlob(11,  investor.getDisplayPicture());
+				
+				//execute the preparedStatement
+				return pstmt.execute();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			return false;
+		}
 	//searching advisor method
 	public Investor searchAdvisor(String idNo) {
 	

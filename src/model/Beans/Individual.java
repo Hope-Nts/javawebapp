@@ -18,6 +18,12 @@ public class Individual extends User implements Serializable{
 		this.lastName = lName;
 	}
 	
+	public Individual(String id, String fName, String lName,String password, String email, String phoneNumber, String address, String description ) {
+		super(id, password, email, phoneNumber, address, description);
+		this.firstName = fName; 
+		this.lastName = lName;
+	}
+	
 	///getters and setters
 	public void setFirstName(String fName) {
 		this.firstName = fName;

@@ -22,6 +22,12 @@ public class Company extends User implements Serializable {
 		this.portfolio = portfolio;
 	}
 	
+	public Company(String id, String companyName, String industry,String password, String email, String phoneNumber, String address, String description) {
+		super(id, password, email, phoneNumber, address, description);
+		this.companyName = companyName;
+		this.industry = industry;
+	}
+	
 	
 	//getters and setters;
 	public void setCompanyName(String companyName) {
