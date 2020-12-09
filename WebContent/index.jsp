@@ -50,15 +50,10 @@
       </div>
       <div class="hero-content">
         <div class="intro-text">
-          <h2>Lorem ipsum</h2>
+          <h2>Francistown Digital City</h2>
           <p class="hero-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Become part of the largest future network of ICT and Software Industry people
+            including companies
           </p>
         </div>
         <div class="cta">
@@ -77,29 +72,25 @@
             <img src="./img/heroimage2.jpg" alt="" />
           </div>
           <div class="intro-txt">
-            <h2>Lorem ipsum</h2>
+            <h2>Companies</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Francistown Digital City Portal offers a web directory
+              where companies can register and become listed in the directory.
+              Registration is open to companies offering IT infrastructure and 
+              solutions companies offering software development services. The program
+              is looking to offer 200+ companies funding and industry education for growth
+              in the new developing ICT industry of Francistown 
             </p>
           </div>
         </div>
         <div class="intro">
           <div class="intro-txt">
-            <h2>Lorem ipsum</h2>
+            <h2>Individuals</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              The Francistown Digital City Project Offers opportunities for different
+              stake holders within the ICT industry. From Prospective  students looking
+              to break into market. Already established industry Professionals and opportunity
+              to be scouted. Business advisor well vested in the economics of ICT are welcomed on board.
             </p>
           </div>
           <div class="intro-img">
@@ -111,36 +102,35 @@
         <h1 class="section-heading">Applicant</h1>
         <div class="applicatants-container">
           <div class="applicant">
-            <img src="./img/heroimage.jpg" alt="Applicant" />
+            <img src="./img/companies.jpg" alt="Applicant" />
+            <h4>Companies</h4>
           </div>
           <div class="applicant">
-            <img src="./img/heroimage.jpg" alt="Applicant" />
+            <img src="./img/profesionals.jpg" alt="Applicant" />
+            <h4>Professionals</h4>
           </div>
           <div class="applicant">
-            <img src="./img/heroimage.jpg" alt="Applicant" />
+            <img src="./img/students.jpg" alt="Applicant" />
+             <h4>Students</h4>
           </div>
           <div class="applicant">
-            <img src="./img/heroimage.jpg" alt="Applicant" />
+            <img src="./img/advisors.jpg" alt="Applicant" />
+             <h4>Advisors</h4>
           </div>
         </div>
       </section>
       <section>
-        <h1 class="section-heading">Heading</h1>
+        <h1 class="section-heading">What is it?</h1>
         <p class="last-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+          BIH, has formed a strategic partnership with the Botswana Accountancy College,The Botswana
+		  Investment and Trade Center, Francistown City Council and Francistown Investment Forum to 
+		  envision scope, plan and implement the project to create:
+		  <br>
+		  200+ new software jobs
+		  <br>
+		  2000+ employment opportunities     
+		  <br>
+		  education and training opportunities in business creation   
         </p>
       </section>
     </main>

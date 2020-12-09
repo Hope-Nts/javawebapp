@@ -30,6 +30,11 @@
           </form>
           <div class="signUp-redirect">
             <p>Don't have an account? <a href="signUp.jsp">Sign Up</a></p>
+            <br>
+             <p>
+         		 Enter website as guest without registering
+          		<a href="index.jsp">Home</a>
+        	</p>
           </div>
         </div>
       </section>

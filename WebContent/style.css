@@ -6,6 +6,12 @@
 a {
   cursor: pointer;
 }
+
+a:link,a:visited{
+	color: black;
+	text-decoration: none;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
@@ -101,6 +107,13 @@ nav {
   border: 1px solid black;
   padding: 10px;
 }
+.cta a{
+	padding: 2px 2px;
+	border: 2px solid black;
+	background: white;
+	border-radius: 5px;
+}
+
 .profile-links input[type="submit"] {
   border: none;
   font-family: "Poppins", sans-serif;
@@ -161,10 +174,38 @@ h1 {
   text-align: center;
 }
 
-.footer {
-  background-color: black;
+footer {
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  background-color: white;
+}
+.footer-links {
+  flex: 1;
+  padding: 5px;
+  background-color: white;
 }
 
+.footer-logo {
+  flex: 1;
+}
+
+.footer-text {
+  border: solid 2px black;
+  height: 100%;	
+  flex: 1;
+  padding: 20px 10px;
+  margin-right: 30px;
+}
+
+.footer-links li {
+  color: black;
+  list-style: none;
+}
+.footer-links li p {
+  text-decoration: underline;
+}
 /*==================================================================================================================
 directory css*/
 .directory-inputs {
