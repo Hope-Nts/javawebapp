@@ -35,7 +35,7 @@
         <c:forEach var="company" items="${companies}">
  			<div class="search-result">
             	<div class="display-picture">
-            		<img src="./img/heroimage.jpg" alt="" />
+            		<img src="data:image/jpg;base64,${company.getBase64DisplayPicture()}" alt="" />
             	</div>
                 <div class="information">
            	    	<ul>
@@ -45,6 +45,86 @@
 		              <li>
 		                <form action="LoadProfileServlet" method="get">
 		                  <input type="hidden" value="${company.id}" name="id" />
+		                  <input type="submit" value="profile" />
+		                </form>
+		              </li>
+		            </ul>
+         		</div>
+       		</div>
+		</c:forEach>
+		<c:forEach var="professional" items="${professionals}">
+ 			<div class="search-result">
+            	<div class="display-picture">
+            		<img src="data:image/jpg;base64,${professional.getBase64DisplayPicture()}" alt="" />
+            	</div>
+                <div class="information">
+           	    	<ul>
+		              <li>Name: <span><c:out value="${professional.firstName}"  /> </span>  <span><c:out value="${professional.lastName}"  /> </span></li>
+		              <li>Industry: <span><c:out value="${professional.industry}"/> </span> </li>
+		              <li>Contacts:<span><c:out value="${professional.email}"/> ,<c:out value="${professional.phoneNumber}"/> </span></li>
+		              <li>
+		                <form action="LoadProfileServlet" method="get">
+		                  <input type="hidden" value="${professional.id}" name="id" />
+		                  <input type="submit" value="profile" />
+		                </form>
+		              </li>
+		            </ul>
+         		</div>
+       		</div>
+		</c:forEach>
+		<c:forEach var="prospect" items="${prospects}">
+ 			<div class="search-result">
+            	<div class="display-picture">
+            		<img src="data:image/jpg;base64,${prospect.getBase64DisplayPicture()}" alt="" />
+            	</div>
+                <div class="information">
+           	    	<ul>
+		              <li>Name: <span><c:out value="${prospect.firstName}"  /> </span>  <span><c:out value="${prospect.lastName}"  /> </span></li>
+		              <li>Level: <span><c:out value="${prospect.level}"/> </span> </li>
+		              <li>Contacts:<span><c:out value="${prospect.email}"/> ,<c:out value="${prospect.phoneNumber}"/> </span></li>
+		              <li>
+		                <form action="LoadProfileServlet" method="get">
+		                  <input type="hidden" value="${prospect.id}" name="id" />
+		                  <input type="submit" value="profile" />
+		                </form>
+		              </li>
+		            </ul>
+         		</div>
+       		</div>
+		</c:forEach>
+		<c:forEach var="investor" items="${investors}">
+ 			<div class="search-result">
+            	<div class="display-picture">
+            		<img src="data:image/jpg;base64,${investor.getBase64DisplayPicture()}" alt="" />
+            	</div>
+                <div class="information">
+           	    	<ul>
+		              <li>Name: <span><c:out value="${investor.firstName}"  /> </span>  <span><c:out value="${investor.lastName}"  /> </span></li>
+		              <li>Industry: <span><c:out value="${investor.industry}"/> </span> </li>
+		              <li>Contacts:<span><c:out value="${investor.email}"/> ,<c:out value="${investor.phoneNumber}"/> </span></li>
+		              <li>
+		                <form action="LoadProfileServlet" method="get">
+		                  <input type="hidden" value="${investor.id}" name="id" />
+		                  <input type="submit" value="profile" />
+		                </form>
+		              </li>
+		            </ul>
+         		</div>
+       		</div>
+		</c:forEach>
+		<c:forEach var="businessAdvisor" items="${businessAdvisors}">
+ 			<div class="search-result">
+            	<div class="display-picture">
+            		<img src="data:image/jpg;base64,${businessAdvisor.getBase64DisplayPicture()}" alt="" />
+            	</div>
+                <div class="information">
+           	    	<ul>
+		              <li>Name: <span><c:out value="${businessAdvisor.firstName}"  /> </span>  <span><c:out value="${businessAdvisor.lastName}"  /> </span></li>
+		              <li>Type: <span><c:out value="${businessAdvisor.advisorType}"/> </span> </li>
+		              <li>Contacts:<span><c:out value="${businessAdvisor.email}"/> ,<c:out value="${businessAdvisor.phoneNumber}"/> </span></li>
+		              <li>
+		                <form action="LoadProfileServlet" method="get">
+		                  <input type="hidden" value="${businessAdvisor.id}" name="id" />
 		                  <input type="submit" value="profile" />
 		                </form>
 		              </li>

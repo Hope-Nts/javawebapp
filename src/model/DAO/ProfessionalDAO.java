@@ -80,7 +80,7 @@ public class ProfessionalDAO {
 			
 			PreparedStatement pstmt = con.prepareStatement("insert into professional(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			pstmt.setString(1, "");//TO-DO create an id generator
+			pstmt.setString(1, professional.getId());//TO-DO create an id generator
 			pstmt.setString(2, professional.getFirstName());
 			pstmt.setString(3, professional.getLastName());
 			pstmt.setString(4, professional.getIndustry());

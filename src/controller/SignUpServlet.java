@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.MultipartConfig;
 
+import model.Beans.BusinessAdvisor;
 import model.Beans.Company;
 import model.Beans.Investor;
 import model.Beans.Professional;
 import model.Beans.Prospect;
+import model.DAO.BusinessAdvisorDAO;
 import model.DAO.CompanyDAO;
 import model.DAO.InvestorDAO;
 import model.DAO.ProfessionalDAO;
@@ -155,7 +157,6 @@ public class SignUpServlet extends HttpServlet {
 			String obtainedQualification = request.getParameter("obtainedQualification");
 			String expectedDateOfCompletion = request.getParameter("dateOfCompletion");
 			String description = request.getParameter("description");
-				        
 	       //getting the displayPicure file from the request
 			InputStream displayPicture = null; // input stream of the upload file
 	        // obtains the upload file part in this multipart request
@@ -173,7 +174,6 @@ public class SignUpServlet extends HttpServlet {
 	        ProspectDAO prospectDAO = new ProspectDAO();
 	        String id = prospectDAO.createId();
 	        Prospect newProspect = new Prospect( id, level, currentQualification, obtainedQualification, expectedDateOfCompletion, firstName, lastName, password, email, phoneNumber, address, description, displayPicture);
-	        
 	        confirmation = prospectDAO.insertProspect(newProspect);
 	        if(confirmation = true) {
 	        	url = "/index.jsp";
@@ -216,7 +216,44 @@ public class SignUpServlet extends HttpServlet {
 	        }else {
 	        	url = "/index.jsp";
 	        }
+		}else if(action.equals("advisorSignUp")) {
+			//getting the parameters from the request
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");	
+			String advisorType = request.getParameter("advisorType");
+			String employmentStatus = request.getParameter("employmentStatus");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			String phoneNumber = request.getParameter("phoneNumber");
+			String address = request.getParameter("address");
+			String industry = request.getParameter("industry");
+			String description = request.getParameter("description");        
+	       //getting the displayPicure file from the request
+			InputStream displayPicture = null; // input stream of the upload file
+	        // obtains the upload file part in this multipart request
+	        Part displayPictureFilePart = request.getPart("displayPicture");
+	        if (displayPictureFilePart != null) {
+	            // prints out some information for debugging
+	            System.out.println(displayPictureFilePart.getName());
+	            System.out.println(displayPictureFilePart.getSize());
+	            System.out.println(displayPictureFilePart.getContentType());
+	             
+	            // obtains input stream of the upload file
+	            displayPicture = displayPictureFilePart.getInputStream();
+	        }
+	        
+	        BusinessAdvisorDAO advisorDAO = new BusinessAdvisorDAO();
+	        String id = advisorDAO.createId();
+	        BusinessAdvisor newAdvisor = new BusinessAdvisor( id, advisorType, employmentStatus, firstName, lastName, password, email, phoneNumber, address, description, displayPicture);
+	        
+	        confirmation = advisorDAO.insertAdvisor(newAdvisor);
+	        if(confirmation = true) {
+	        	url = "/index.jsp";
+	        }else {
+	        	url = "/index.jsp";
+	        }
 		}
+
 
 
 

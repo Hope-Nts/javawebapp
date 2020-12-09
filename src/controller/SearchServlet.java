@@ -42,10 +42,10 @@ public class SearchServlet extends HttpServlet {
 		String keyword = request.getParameter("keyword");
 		
 		ArrayList<Company> companies = company.getCompanies();
-		//ArrayList<BusinessAdvisor> businessAdvisors = businessAdvisor.getAdvisors();
-		//ArrayList<Professional> professionals = professional.getProfessionals();
-		//ArrayList<Investor> investors = investor.getInvestors();
-		//ArrayList<Prospect> prospects = prospect.getProspects();
+		ArrayList<BusinessAdvisor> businessAdvisors = businessAdvisor.getAdvisors();
+		ArrayList<Professional> professionals = professional.getProfessionals();
+		ArrayList<Investor> investors = investor.getInvestors();
+		ArrayList<Prospect> prospects = prospect.getProspects();
 		ArrayList<User> users = new ArrayList<>();
 		ArrayList<Company> resultCompanies = new ArrayList<>();
 		ArrayList<BusinessAdvisor> resultBusinessAdvisors = new ArrayList<>();
@@ -63,7 +63,7 @@ public class SearchServlet extends HttpServlet {
 						resultCompanies.add(tempCompany);
 					}
 				}
-			}/*else if(type.equals("advisor")) {
+			}else if(type.equals("advisor")) {
 				for(int i = 0; i < businessAdvisors.size(); i++) {
 						BusinessAdvisor tempAdvisor = businessAdvisors.get(i);
 						resultBusinessAdvisors.add(tempAdvisor);
@@ -77,7 +77,7 @@ public class SearchServlet extends HttpServlet {
 					}
 				}
 			}else if(type.equals("prospect")) {
-				for(int i = 0; i < companies.size(); i++) {
+				for(int i = 0; i < prospects.size(); i++) {
 						Prospect tempProspect = prospects.get(i);
 						resultProspects.add(tempProspect);
 				}
@@ -88,7 +88,7 @@ public class SearchServlet extends HttpServlet {
 						resultInvestors.add(tempInvestor);
 					}
 				}
-			}*/
+			}
 			
 		}else{
 			//use only the keyword as the search
@@ -99,7 +99,7 @@ public class SearchServlet extends HttpServlet {
 						resultCompanies.add(tempCompany);
 					}
 				}
-			}/*else if(type.equals("advisor")) {
+			}else if(type.equals("advisor")) {
 				for(int i = 0; i < businessAdvisors.size(); i++) {
 					if(businessAdvisors.get(i).getFirstName().contains(keyword) || businessAdvisors.get(i).getLastName().contains(keyword) || businessAdvisors.get(i).getAdvisorType().contains(keyword) ) {
 						BusinessAdvisor tempAdvisor = businessAdvisors.get(i);
@@ -115,7 +115,7 @@ public class SearchServlet extends HttpServlet {
 					}
 				}
 			}else if(type.equals("prospect")) {
-				for(int i = 0; i < companies.size(); i++) {
+				for(int i = 0; i < prospects.size(); i++) {
 					if(prospects.get(i).getFirstName().contains(keyword) || prospects.get(i).getLastName().contains(keyword)) {
 						Prospect tempProspect = prospects.get(i);
 						resultProspects.add(tempProspect);
@@ -128,14 +128,14 @@ public class SearchServlet extends HttpServlet {
 						resultInvestors.add(tempInvestor);
 					}
 				}
-			}*/
+			}
 		}
 		
 		request.setAttribute("companies", resultCompanies);
-		//request.setAttribute("professionals", resultProfessionals);
-		//request.setAttribute("prospects", resultProspects);
-		//request.setAttribute("investors", resultInvestors);
-		//request.setAttribute("businessAdvisors", resultBusinessAdvisors);
+		request.setAttribute("professionals", resultProfessionals);
+		request.setAttribute("prospects", resultProspects);
+		request.setAttribute("investors", resultInvestors);
+		request.setAttribute("businessAdvisors", resultBusinessAdvisors);
 		 getServletContext()
 		 	.getRequestDispatcher(url)
 		 	.forward(request, response);

@@ -8,27 +8,27 @@
           <form action="updateServlet" method="POST">
             <input type="submit" value="Update" />
             <label>Name</label>
-            <input type="text" name="companyName" />
+            <input type="text" name="companyName" value="${profile.companyName }"/>
             <label>Industry</label>
-            <select name="industry" name="industry">
+            <select name="industry" name="industry" value="${profile.industry }">
               <option value="IT Infrastructure">IT Infrastructure</option>
               <option value="Software Development">Software Development</option>
             </select>
             <label>Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" value="${profile.email }"/>
             <label>Password</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" value="${profile.password }"/>
             <label>Phone</label>
-            <input type="text" name="phoneNumber" />
+            <input type="text" name="phoneNumber" value="${profile.phoneNumber }" />
             <label>Address</label>
-            <input type="text" name="address" />
+            <input type="text" name="address" value="${profile.address }"/>
             <label>Porfolio</label>
-            <input type="file" name="portfolio" />
+            <input type="file" name="portfolio"/>
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
             <textarea name="Description" rows="10" cols="30">
-            Description
+            	${profile.description}
           </textarea
             >
           </form>

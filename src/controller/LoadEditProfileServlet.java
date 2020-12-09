@@ -50,7 +50,7 @@ public class LoadEditProfileServlet extends HttpServlet {
 		String url = request.getHeader("referer");
 		System.out.print(url);
 		HttpSession session = request.getSession();
-		LoginToken token = (LoginToken)request.getAttribute("loginToken");
+		LoginToken token = (LoginToken)session.getAttribute("loginToken");
 		
 		if(token != null) {
 			if(token.isLoggedIn() == true) {
@@ -96,9 +96,11 @@ public class LoadEditProfileServlet extends HttpServlet {
 				}
 			
 			}
+		}else {
+			response.sendRedirect(url);
 		}
 		
-		response.sendRedirect(url);
+		
 		
 		
 	}

@@ -78,9 +78,9 @@ public class ProspectDAO {
 		
 		try {
 			
-			PreparedStatement pstmt = con.prepareStatement("insert into prospect(id, fName, lName, industry, qualification, experience, status, email, password, phoneNumber, address, description, displayPicture ) "
+			PreparedStatement pstmt = con.prepareStatement("insert into prospect(id, fName, lName, level, currentQualification, obtainedQualification, expectedDate, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			pstmt.setString(1, "");//TO-DO create an id generator
+			pstmt.setString(1, prospect.getId());//TO-DO create an id generator
 			pstmt.setString(2, prospect.getFirstName());
 			pstmt.setString(3, prospect.getLastName());
 			pstmt.setString(4, prospect.getLevel());

@@ -27,18 +27,17 @@
             <li><a class="nav-link" href="index.jsp">Home</a></li>
             <li><a class="nav-link" href="directory.jsp">Directory</a></li>
             <li><a class="nav-link" href="aboutUs.jsp">About Us</a></li>
-            <li><a class="nav-link" href="#">Contact Us</a></li>
           </ul>
         </nav>
-        <div class="search">
-          <form action="" method="get">
-            <input type="text" name="" id="" />
-          </form>
-        </div>
+       
         <div class="profile">
 		  <div class="profile-links">
             <ul>
-              <li><a class="nav-link" href="signIn.jsp">Sign out</a></li>
+              <li>
+              <form action="SignOutServlet" method="GET" >
+                  <input type="submit" value="SignOut" />
+                </form>
+			 </li>
               <li>
                 <form action="LoadUserProfile" method="GET" >
                   <input type="hidden" value="${loginToken.id }" name ="loginId" />

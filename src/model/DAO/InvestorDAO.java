@@ -79,7 +79,7 @@ public class InvestorDAO {
 			
 			PreparedStatement pstmt = con.prepareStatement("insert into investor(id, fName, lName, industry, firmName, email, password, phoneNumber, address, description, displayPicture ) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?)");
-			pstmt.setString(1, "");//TO-DO create an id generator
+			pstmt.setString(1, investor.getId());//TO-DO create an id generator
 			pstmt.setString(2, investor.getFirstName());
 			pstmt.setString(3, investor.getLastName());
 			pstmt.setString(4, investor.getIndustry());

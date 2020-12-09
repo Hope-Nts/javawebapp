@@ -8,7 +8,7 @@
           <form action="updateServlet" method="POST">
             <input type="submit" value="Update" />
             <label>First Name</label>
-            <input type="text" name="firstName" />
+            <input type="text" name="firstName" value="${profile.firstName }"/>
             <label>Last Name</label>
             <input type="text" name="lastName" />
             <label>Email</label>

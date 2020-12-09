@@ -19,10 +19,8 @@ public class Prospect extends Individual implements Serializable {
 		
 		this.level = level;
 		this.currentQualification = currentQualification;
+		this.obtainedQualification = obtainedQualification;
 		this.expectedDateOfCompletion = expectedDateOfCompletion;
-		if(obtainedQualification.equals("NA")) {
-			this.currentQualification = "";
-		}
 	}
 	
 	//getters and setters
@@ -56,7 +54,7 @@ public class Prospect extends Individual implements Serializable {
 	}
 	
 	public String getObtainedQualification() {
-		return this.obtainedQualification ;
+		return this.obtainedQualification;
 	}
 	
 }

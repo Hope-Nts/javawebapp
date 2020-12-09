@@ -6,17 +6,17 @@
       <h1 class="section-heading">Profile</h1>
         <div class="profile-user-info">
           <div class="profile-img">
-            <img src="./img/profile.png" alt="" />
+            <img src="data:image/jpg;base64,${profile.getBase64DisplayPicture()}" alt="" />
           </div>
           <div class="profile-info">
             <div class="edit-btn">
-              <form action="editServlet">
+              <form action="LoadEditProfileServlet">
                 <input type="hidden" name="edit" action="edit" />
                 <input type="submit" value="Edit" />
               </form>
             </div>
             <h2>Investor</h2>
-            <p><span>Name: ${profile.firstName} ${profile.lasttName}</span></p>
+            <p><span>Name: ${profile.firstName} ${profile.lastName}</span> </p>
             <p><span>Email: ${profile.email}</span></p>
             <p><span>Industry: ${profile.industry}</span></p>
             <p><span>Firm Name: ${profile.firmName}</span></p>

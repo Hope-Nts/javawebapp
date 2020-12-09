@@ -101,7 +101,7 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               Description
             </textarea>
             <input type="submit" value="Sign Up" />
@@ -129,7 +129,7 @@
             </label>
             <input type="text" name="address" />
             <label>Experience *Years</label>
-            <input type="text" name="Experience" />
+            <input type="text" name="experience" />
             <label>Qualification</label>
             <input type="text" name="qualification" />
             <label>Employment Status</label>
@@ -140,7 +140,7 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               Description
             </textarea>
             <input type="submit" value="Sign Up" />
@@ -167,7 +167,7 @@
             <label>Addres</label>
             <input type="text" name="address" />
             <label>Experience *Years</label>
-            <input type="text" name="Experience" />
+            <input type="text" name="experience" />
             <label>Employment Status</label>
             <select name="employmentStatus">
               <option value="Employed">Employed</option>
@@ -176,7 +176,7 @@
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               Description
             </textarea>
             <input type="submit" value="Sign Up" />
@@ -205,11 +205,11 @@
             <label>FirmName</label>
             <input type="text" name="firmName" />
             <label>Experience *Years</label>
-            <input type="text" name="Experience" />
+            <input type="text" name="experience" />
             <label>Display Picture</label>
             <input type="file" name="displayPicture" />
             <label>Description</label>
-            <textarea name="Description" rows="10" cols="30">
+            <textarea name="description" rows="10" cols="30">
               Description
             </textarea>
             <input type="submit" value="Sign Up" />
@@ -222,6 +222,7 @@
         <p>
           Enter website as guest without registering
           <a href="index.jsp">Home</a>
+          <a href="signIn.jsp">  SignIn</a>
         </p>
       </div>
     </footer>
